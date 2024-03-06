@@ -1,0 +1,1 @@
+/*main javascript for any coding we may have to do*/
