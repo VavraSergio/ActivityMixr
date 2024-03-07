@@ -6,8 +6,10 @@ body {
 }
 
 header {
-    background-color: blueviolet;
     text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #008080, #87CEEB);
+    color: white;
 }
 
 footer {}
