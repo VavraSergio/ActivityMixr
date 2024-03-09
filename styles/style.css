@@ -25,9 +25,23 @@ footer {
     display: flex;
     flex-direction: row;
 
-    h1 {
-        font-size: 20px;
+    .welcome-section {
+        text-align: center;
+        padding: 20px;
     }
+
+    .activity-categories {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .activity-category {
+        flex: 1;
+        margin: 10px;
+    }
+
+
 }
 
 aside {
