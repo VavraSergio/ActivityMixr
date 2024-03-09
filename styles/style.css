@@ -24,38 +24,6 @@ footer {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-
-    .welcome-section {
-        text-align: center;
-        padding: 20px;
-    }
-
-    .activity-categories {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
-    }
-
-    .activity-category {
-        margin: 10px;
-    }
-
-    @media (max-width: 690px) {
-        .activity-categories {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .activity-category {
-            flex: 0 0 100%;
-            margin: 10px 0;
-        }
-
-        .welcome-section {
-            text-align: center;
-            padding: 0px;
-        }
-    }
 }
 
 aside {

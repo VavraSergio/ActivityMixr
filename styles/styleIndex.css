@@ -8,27 +8,23 @@
         padding: 20px;
     }
 
-    .about_photo {
+    .activity-categories {
         display: flex;
         justify-content: space-around;
         margin-top: 20px;
     }
 
-    .about_photos {
+    .activity-category {
         margin: 10px;
-
-        p {
-            margin-left: 75px;
-        }
     }
 
-    @media (max-width: 490px) {
-        .about_photo {
+    @media (max-width: 690px) {
+        .activity-categories {
             flex-direction: column;
             align-items: center;
         }
 
-        .about_photos {
+        .activity-category {
             flex: 0 0 100%;
             margin: 10px 0;
         }
