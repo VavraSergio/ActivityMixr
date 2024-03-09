@@ -1,0 +1,25 @@
+.middler {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+
+    .welcome-section {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about_photo {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .about_photos {
+        flex: 1;
+        margin-left: 175px;
+
+        p {
+            text-align: center;
+        }
+    }
+}
