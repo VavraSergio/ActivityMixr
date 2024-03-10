@@ -66,6 +66,12 @@ a {
     border-radius: 5px;
 }
 
+/* This is for generate.html styling */
 .generate {
     text-align: center;
+}
+
+.questions {
+    text-align: center;
+    padding: 5px;
 }

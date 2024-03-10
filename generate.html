@@ -26,6 +26,33 @@
         <aside class="lefter"></aside>
         <main>
             <h1 class="generate" >Generate your ActivityMix</h1>
+            <!-- questions are subject to change in order; just to show proof of concept -->
+            <div class="questions">
+                <div class="question1">
+                    <label>How many people are working out with you today?</label>
+                    <input type="number">
+                </div>
+                <div class="question2">
+                    <label>What kind of mood are you in?</label>
+                    <input type="color">
+                </div>
+                <div class="question3">
+                    <label>Do you want this playlist to include a cardio-centric portion?</label>
+                    <input type="radio" id="yes" name="cardio" value="Yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no" name="cardio" value="No">
+                    <label for="no">No</label>
+                </div>
+                <div class="question4">
+                    <label>How long would would you like your playlist to be?</label>
+                    <input type="number">
+                </div>
+                <!-- this spot goes to the last question / submit and reset -->
+                <div class="questionX">
+                    <br><input type="submit" class="submission">
+                    <input type="reset" class="reset">
+                </div>
+            </div>
         </main>
         <aside class="righter"></aside>
     </div>
