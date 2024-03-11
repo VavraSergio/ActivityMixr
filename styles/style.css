@@ -57,8 +57,7 @@ nav {
     }
 }
 
-
-a {
+ a {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -74,4 +73,25 @@ a {
 .questions {
     text-align: center;
     padding: 5px;
+}
+
+.playlisth1 {
+    text-align: center;
+    color: black;
+}
+
+.spotify {
+    color: #6622CC;
+}
+
+.playlist-main {
+    text-align: center;
+}
+
+.help-link {
+    color: black;
+}
+
+.get-started {
+    color: #6622CC;
 }
