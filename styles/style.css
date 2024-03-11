@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     margin: 0;
     min-height: 100vh;
+    font-family: 'Times New Roman', serif;
 }
 
 header,
@@ -12,6 +13,8 @@ footer {
     background: linear-gradient(to right, #008080, #87CEEB);
     color: white;
     font-weight: bold;
+
+    font-family: 'Arial', sans-serif;
 
     p {
         color: #111D70;
@@ -57,7 +60,7 @@ nav {
     }
 }
 
- a {
+a {
     text-decoration: none;
     color: white;
     font-weight: bold;
