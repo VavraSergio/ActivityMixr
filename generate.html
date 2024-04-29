@@ -33,14 +33,14 @@
                         type="number" id="participants">
                 </div>
                 <div class="question2">
-                    <label for="mood">What kind of mood are you in?</label><input type="color" id="mood">
+                    <label for="mood">What kind of mood are you in? </label><input type="color" id="mood">
                 </div>
                 <!-- <div class="question3">
-                    <label for="yes_no_radio">Do you want this playlist to include a cardio-centric portion?</label>
-                        <input type="radio" name="yes_no">Yes</input>
-                        <label for="yes">Yes</label>
-                        <input type="radio" name="yes_no">No</input>
-                       <label for="no">No</label> 
+                    <label for="yes_no">Do you want this playlist to include a cardio-centric portion?</label>
+                    <label for="Yes">Yes</label>
+                    <input type="radio" id="Yes" name="yes_no" value="Yes">
+                    <label for="No">No</label>
+                    <input type="radio" id="No" name="yes_no" value="No">
                 </div> -->
                 <div class="question4">
                     <label for="duration">How long would would you like your playlist to be?</label>
@@ -64,6 +64,10 @@
                             document.getElementById('activity').textContent = data.activity;
                         })
                         .catch(error => console.error('Error fetching activity:', error));
+                }
+
+                function Spotify() {
+                    
                 }
             </script>
         </main>
