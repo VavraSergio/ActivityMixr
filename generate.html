@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>About</title>
+    <title>Generate</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -22,59 +22,36 @@
         </nav>
     </header>
     <div class="middler">
-        <!--May want to remove aside classes, depends on what information we want to show-->
         <main>
             <h1 class="generate">Generate your ActivityMix</h1>
-            <!-- questions are subject to change in order; just to show proof of concept -->
             <div class="questions">
-                <div class="question1">
-                    <label for="participants">How many people are working out with you today?</label><input
-                        type="number" id="participants">
-                </div>
-                <div class="question2">
-                    <label for="mood">What kind of mood are you in? </label><input type="color" id="mood">
-                </div>
-                <!-- <div class="question3">
-                    <label for="yes_no">Do you want this playlist to include a cardio-centric portion?</label>
-                    <label for="Yes">Yes</label>
-                    <input type="radio" id="Yes" name="yes_no" value="Yes">
-                    <label for="No">No</label>
-                    <input type="radio" id="No" name="yes_no" value="No">
-                </div> -->
-                <div class="question4">
-                    <label for="duration">How long would would you like your playlist to be?</label>
-                    <input type="number" id="duration">
-
-                </div>
-                <!-- this spot goes to the last question / submit and reset -->
-                <div class="questionX">
-                    <button type="button" onclick="">Submit</button>
-                    <button type="button" onclick="">Reset</button>
-                </div>
+                <form id="activityForm">
+                    <div class="question1">
+                        <label for="participants">How many people are working out with you today?</label>
+                        <input type="number" id="participants" name="participants" min="0">
+                    </div>
+                    <div class="question3">
+                        <label for="type">Select type of activity:</label>
+                        <select id="type" name="type">
+                            <option value="education">Education</option>
+                            <option value="recreational">Recreational</option>
+                            <option value="social">Social</option>
+                            <option value="cooking">Cooking</option>
+                        </select>
+                    </div>
+                    <div class="questionX">
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button>
+                    </div>
+                </form>
             </div>
-            <button type="button" onclick="getActivity()">Get Activity</button>
             <p id="activity"></p>
-
-            <script>
-                function getActivity() {
-                    fetch('https://www.boredapi.com/api/activity')
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('activity').textContent = data.activity;
-                        })
-                        .catch(error => console.error('Error fetching activity:', error));
-                }
-            
-                async function Spotify() 
-                {
-                    
-                }
-            </script>
         </main>
     </div>
     <footer>
         © 2024 ActivityMixr, LLC
     </footer>
+    <script src="scripts/generate.js"></script>
 </body>
 
 </html>
