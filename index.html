@@ -54,8 +54,9 @@
                 </div>
             </div>
 
-            <form id="spotify-login">
-                <button type="submit">Login to Spotify</button>
+            <!-- spotify login; testing to see if not using form id makes this easier -->
+            <form>
+                <button id="spotify-login" type="submit">Login to Spotify</button>
             </form>
 
             <div class="welcome-section">
@@ -76,9 +77,32 @@
     <script src="scripts/spotify.js"></script>
 
     <script>
+        const clientId = "d774e69457df4fafbd90d6fb8208be05"
+        const redirectUri = new URL("https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html")
 
+        // const testRedirectUri = new URL("http://127.0.0.1:5501/index.html");
+
+        let accessToken = localStorage.getItem("access_token");
+
+        // Check to see if the accessToken is already in the url
+        // if ( accessToken )
+        // {
+        //     //do something
+
+        // }
+        // else
+        // {
+        //     //do something else
+        // }
+
+        document.getElementById("spotify-login").addEventListener("click", async () => {
+            event.preventDefault();
+            [verifier, challenge] = await generateCodeChallenge();
+            localStorage.setItem("code_verifier", verifier);
+            requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email")
+        })
     </script>
-    
+
 </body>
 
 </html>
