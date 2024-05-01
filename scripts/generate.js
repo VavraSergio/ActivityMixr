@@ -46,24 +46,30 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
     }
     var modal = document.getElementById("myModal");
 
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
     modal.style.display = "block";
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
 
-            if (!data.activity || data.activity === '') {
-                document.getElementById("modal-text").textContent = 'No activity found with those parameters!';
-                return;
-            }
-            document.getElementById("modal-text").textContent = data.activity;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+    if (randomNumber === 1) {
+        document.getElementById("modal-text").textContent = 'Go gambling!';
+    } else {
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+
+                if (!data.activity || data.activity === '') {
+                    document.getElementById("modal-text").textContent = 'No activity found with those parameters!';
+                    return;
+                }
+                document.getElementById("modal-text").textContent = data.activity;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
 
     span.onclick = function () {
         modal.style.display = "none";
