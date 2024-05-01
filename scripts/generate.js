@@ -47,6 +47,10 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+            if (!data.activity || data.activity === '') {
+                document.getElementById('activity').textContent = 'No activity found with those parameters!';
+                return;
+            }
             document.getElementById('activity').textContent = data.activity;
         })
         .catch(error => {
