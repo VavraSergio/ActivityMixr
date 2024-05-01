@@ -8,6 +8,11 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
     let type = document.getElementById('type').value;
 
+    let accessibility = document.getElementById('accessibility').value;
+
+    let price = document.getElementById('price').value;
+
+
     let count = 0;
 
     if (!(participants === '')) {
@@ -17,9 +22,27 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
     if (!(type === 'any')) {
         if (count > 0) {
-            apiURL += '&';
+            apiUrl += '&';
         }
         apiUrl += 'type=' + type;
+        count += 1;
+    }
+
+    if (!(parseInt(accessibility) === 0)) {
+        if (count > 0) {
+            apiUrl += '&';
+        }
+        apiUrl += 'accessibility=' + accessibility;
+
+        count += 1;
+    }
+
+    if (!(parseInt(price) === 0)) {
+        if (count > 0) {
+            apiUrl += '&';
+        }
+        apiUrl += 'price=' + price;
+        count += 1;
     }
     fetch(apiUrl)
         .then(response => response.json())
