@@ -30,3 +30,11 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
             console.error('Error fetching data:', error);
         });
 });
+
+document.getElementById('accessibility').addEventListener('input', function () {
+    document.getElementById('accessibilityValue').textContent = this.value;
+});
+
+document.getElementById('price').addEventListener('input', function () {
+    document.getElementById('priceValue').textContent = this.value;
+});
