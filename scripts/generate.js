@@ -15,12 +15,12 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
         count += 1;
     }
 
-    if (!(type === 'Any')) {
-
+    if (!(type === 'any')) {
+        if (count > 0) {
+            apiURL += '&';
+        }
+        apiUrl += 'type=' + type;
     }
-
-    apiUrl = 'https://www.boredapi.com/api/activity?' + 'participants=' + participants + '&' + 'type=' + type;
-
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
