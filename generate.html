@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>About</title>
+    <title>Generate</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -22,10 +22,8 @@
         </nav>
     </header>
     <div class="middler">
-        <!--May want to remove aside classes, depends on what information we want to show-->
         <main>
             <h1 class="generate">Generate your ActivityMix</h1>
-            <!-- questions are subject to change in order; just to show proof of concept -->
             <div class="questions">
                 <form id="activityForm">
                     <div class="question1">
@@ -47,30 +45,13 @@
                     </div>
                 </form>
             </div>
-
-            <button type="button" onclick="getActivity()">Get Activity</button>
             <p id="activity"></p>
-
-            <script>
-                function getActivity() {
-                    fetch('https://www.boredapi.com/api/activity')
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('activity').textContent = data.activity;
-                        })
-                        .catch(error => console.error('Error fetching activity:', error));
-                }
-            
-                async function Spotify() 
-                {
-                    document.getElementById('activity').textContent
-                }
-            </script>
         </main>
     </div>
     <footer>
         © 2024 ActivityMixr, LLC
     </footer>
+    <script src="scripts/generate.js"></script>
 </body>
 
 </html>

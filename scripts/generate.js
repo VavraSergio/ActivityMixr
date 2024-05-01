@@ -3,14 +3,23 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
 
     let participants = document.getElementById('participants').value;
+    let apiUrl = 'https://www.boredapi.com/api/activity?';
 
-    if (participants === '' || parseInt(participants) < 1) {
-        participants = 1;
-    }
 
     let type = document.getElementById('type').value;
 
-    const apiUrl = 'https://www.boredapi.com/api/activity?' + 'participants=' + participants + '&' + 'type=' + type;
+    let count = 0;
+
+    if (!(participants === '')) {
+        apiUrl += 'participants=' + participants;
+        count += 1;
+    }
+
+    if (!(type === 'Any')) {
+
+    }
+
+    apiUrl = 'https://www.boredapi.com/api/activity?' + 'participants=' + participants + '&' + 'type=' + type;
 
     fetch(apiUrl)
         .then(response => response.json())
