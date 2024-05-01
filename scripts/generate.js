@@ -37,4 +37,4 @@ document.getElementById('accessibility').addEventListener('input', function () {
 
 document.getElementById('price').addEventListener('input', function () {
     document.getElementById('priceValue').textContent = this.value;
-});
+}); //test
