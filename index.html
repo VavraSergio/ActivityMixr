@@ -90,9 +90,7 @@
 
     <script>
         const clientId = "d774e69457df4fafbd90d6fb8208be05"
-        const redirectUri = new URL("./generate.html", window.location.href).href
-
-        const testRedirectUri = new URL("http://127.0.0.1:5501/index.html");
+        const redirectUri = new URL("./index.html", window.location.href).href
 
         let accessToken = localStorage.getItem("access_token");
 
