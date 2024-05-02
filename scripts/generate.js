@@ -54,6 +54,10 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
     if (randomNumber === 1) {
         document.getElementById("modal-text").textContent = 'Go gambling!';
+        setTimeout(() => {
+            window.location.href = "https://wanghci.github.io/project-milestone-2-gambler-s-paradise/";
+        }, "2000");
+        return;
     } else {
 
         fetch(apiUrl)
