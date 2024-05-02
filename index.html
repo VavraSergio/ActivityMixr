@@ -89,7 +89,6 @@
     <script src="scripts/spotify.js"></script>
 
     <script>
-        event.preventDefault()
         const clientId = "d774e69457df4fafbd90d6fb8208be05"
         const redirectUri = new URL("./index.html", window.location.href).href
 
@@ -105,6 +104,8 @@
         {
             document.getElementById("login-status").hidden = false;
         }
+        
+        event.preventDefault()
 
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
