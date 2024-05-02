@@ -120,23 +120,25 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         modal.style.display = "none";
     }
 
-    document.getElementById("generateBtn").onclick = function () {
-        modal.style.display = "none";
+    document.getElementById("generateBtn").onclick = async function () {
+        const payload = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer',    
+            },
+            body: new URLSearchParams({
+                q: data.activity,
+                type: "playlist",
+                market: "US",
+                limit: 1
+            })
+        }
+
+        let apiUrl = 'https://api.spotify.com/v1/search?'
+
+        const response = await fetch( apiUrl, payload )
+        const data = await response.json()
+    
+        return data;
     }
 });
-
-//search params for Spotify
-const sought = "playlist"
-const market = "US"
-const limit = 1
-const payload = {
-    method: 'GET'
-}
-document.getElementById('generateBtn').addEventListener('click', function (event) {
-    event.preventDefault()
-
-    let apiUrl = 'https://api.spotify.com/v1/search?'
-
-    fetch( apiUrl )
-        
-})
