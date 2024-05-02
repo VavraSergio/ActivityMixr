@@ -129,7 +129,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 const sought = "playlist"
 const market = "US"
 const limit = 1
-const author = "spotify"
 
 document.getElementById('generateBtn').addEventListener('click', function (event) {
     event.preventDefault()
