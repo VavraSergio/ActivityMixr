@@ -55,9 +55,21 @@
             </div>
 
             <!-- spotify login; testing to see if not using form id makes this easier -->
-            <form>
-                <button id="spotify-login" type="submit">Login to Spotify</button>
-            </form>
+            <div id="login-status" hidden>
+                <form>
+                    <p>In order to gain full functionality, please login to Spotify!</p>
+                    <button id="spotify-login" type="submit">Login to Spotify</button>
+                </form>
+             </div>
+            <div id="generate-redirect" hidden>
+                <form>
+                    <p>You are already logged in to Spotify.</p>
+                    <p>You can go directly to the generate page using the button below.</p>
+                    <a href="generate.html" class="button primary">Go to generate</a>
+                    <p>Or, click the button to log out</p>
+                    <button id="spotify-logout" type="submit">Logout of Spotify</button>
+                </form>
+            </div>
 
             <div class="welcome-section">
                 <h2>Why Choose ActivityMixr?</h2>
@@ -78,28 +90,36 @@
 
     <script>
         const clientId = "d774e69457df4fafbd90d6fb8208be05"
-        const redirectUri = new URL("https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html")
+        const redirectUri = new URL("./generate.html", window.location.href).href
 
-        // const testRedirectUri = new URL("http://127.0.0.1:5501/index.html");
+        const testRedirectUri = new URL("http://127.0.0.1:5501/index.html");
 
         let accessToken = localStorage.getItem("access_token");
 
         // Check to see if the accessToken is already in the url
-        // if ( accessToken )
-        // {
-        //     //do something
+        if ( accessToken )
+        {
+            document.getElementById("generate-redirect").hidden = false;
 
-        // }
-        // else
-        // {
-        //     //do something else
-        // }
+        }
+        else
+        {
+            document.getElementById("login-status").hidden = false;
+        }
 
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
             [verifier, challenge] = await generateCodeChallenge();
             localStorage.setItem("code_verifier", verifier);
-            requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email")
+            requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
+        })
+
+        document.getElementById("spotify-lougout").addEventListener("click", async() => {
+            event.preventDefault();
+
+            localStorage.removeItem("accessToken")
+            localStorage.removeItem("code_verifier")
+            window.location.reload()
         })
     </script>
 
