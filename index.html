@@ -57,19 +57,9 @@
             <!-- spotify login; testing to see if not using form id makes this easier -->
             <div id="login-status" hidden>
                 <form>
-                    <p>In order to gain full functionality, please login to Spotify!</p>
                     <button id="spotify-login" type="submit">Login to Spotify</button>
                 </form>
              </div>
-            <div id="generate-redirect" hidden>
-                <form>
-                    <p>You are already logged in to Spotify.</p>
-                    <p>You can go directly to the generate page using the button below.</p>
-                    <a href="generate.html" class="button primary">Go to generate</a>
-                    <p>Or, click the button to log out</p>
-                    <button id="spotify-logout" type="submit">Logout of Spotify</button>
-                </form>
-            </div>
 
             <div class="welcome-section">
                 <h2>Why Choose ActivityMixr?</h2>
@@ -90,22 +80,9 @@
 
     <script>
         const clientId = "d774e69457df4fafbd90d6fb8208be05"
-        const redirectUri = new URL("./index.html", window.location.href).href
+        const redirectUri = new URL("./generate.html", window.location.href).href
 
         let accessToken = localStorage.getItem("access_token");
-
-        // Check to see if the accessToken is already in the url
-        if ( accessToken )
-        {
-            document.getElementById("generate-redirect").hidden = false;
-
-        }
-        else
-        {
-            document.getElementById("login-status").hidden = false;
-        }
-        
-        event.preventDefault()
 
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
