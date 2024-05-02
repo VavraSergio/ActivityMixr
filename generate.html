@@ -79,62 +79,6 @@
     </footer>
     <script src="scripts/generate.js"></script>
     <script src="scripts/spotify.js"></script>
-
-    <!-- <script>
-        const clientId = "d774e69457df4fafbd90d6fb8208be05"
-        const redirectUri = new URL("./generate.html", window.location.href).href
-
-        const tryToRefresh = async (clientId, refreshToken) => 
-        {
-            try 
-            {
-                const tokenData = await getRefreshToken( clientId, refreshToken )
-
-                localStorage.setItem( "access_token", tokenData.access_token )
-                localStorage.setItem( "refresh_token", tokenDAta.refresh_token )
-                localStorage.setItem( "expiry_time", Date.now() + tokenData.expires_in * 1000 )
-
-                console.log("Access token refreshed!")
-
-                window.location.reload()
-            }
-            catch ( error )
-            {
-                alert( error )
-
-                localStorage.removeItem( "access_token" )
-                localStorage.removeItem( "refresh_token" )
-                localStorage.removeItem( "expiry_time")
-                window.location.href = "index.html"
-            }
-        }
-
-        if ( localStorage.getItem( "access_token" ) )
-        {
-            let expiryTime = parseInt( localStorage.getItem( "expiry_time" ) )
-
-            if ( Date.now() >= expiryTime ) 
-            {
-                console.log("Access token has expired!");
-
-                let refreshToken = localStorage.getItem( "refresh_token" )
-                tryToRefresh( clientId, refreshToken )
-            }
-        }
-        else
-        {
-            console.log("No access token found!");
-            window.location.href = "index.html";
-        }
-
-        let accessToken = localStorage.getItem( "access_token" )
-
-        if( !accessToken )
-        {
-            console.log("No access token found!")
-            window.location.href = "index.html"
-        }
-    </script> -->
 </body>
 
 </html>

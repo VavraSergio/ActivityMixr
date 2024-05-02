@@ -91,3 +91,13 @@ document.getElementById('accessibility').addEventListener('input', function () {
 document.getElementById('price').addEventListener('input', function () {
     document.getElementById('priceValue').textContent = this.value;
 }); //test
+
+<script src="scripts/spotify.js"></script>
+
+const clientId = "d774e69457df4fafbd90d6fb8208be05"
+const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
+let accessToken = localStorage.getItem("access_token")
+let challenge = localStorage.getItem("challenge")
+document.getElementById('generateBtn').addEventListener('click', async () => {
+    requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
+})

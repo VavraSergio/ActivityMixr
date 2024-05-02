@@ -86,6 +86,7 @@
             event.preventDefault();
             [verifier, challenge] = await generateCodeChallenge();
             localStorage.setItem("code_verifier", verifier);
+            localStorage.setItem("challenge", challenge);
             requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
         })
     </script>
