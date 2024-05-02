@@ -54,6 +54,7 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
     if (randomNumber === 1) {
         document.getElementById("modal-text").textContent = 'Go gambling!';
+        window.location.href = "https://wanghci.github.io/project-milestone-2-gambler-s-paradise/";
     } else {
 
         fetch(apiUrl)
@@ -137,6 +138,6 @@ document.getElementById('generateBtn').addEventListener('click', function (event
 
     let apiUrl = 'https://api.spotify.com/v1/search?'
 
-    fetch( apiUrl )
-        
+    fetch(apiUrl)
+
 })
