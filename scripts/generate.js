@@ -92,12 +92,43 @@ document.getElementById('price').addEventListener('input', function () {
     document.getElementById('priceValue').textContent = this.value;
 }); //test
 
- <script src="scripts/spotify.js"></script>
+document.getElementById('lucky').addEventListener('click', function (event) {
+    event.preventDefault();
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
 
-const clientId = "d774e69457df4fafbd90d6fb8208be05"
-const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
-let accessToken = localStorage.getItem("access_token")
-let challenge = localStorage.getItem("challenge")
-document.getElementById('generateBtn').addEventListener('onClick', async () => {
-    location.href = redirectUri
-})
+    modal.style.display = "block";
+
+    let apiUrl = 'https://www.boredapi.com/api/activity?';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("modal-text").textContent = data.activity;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    document.getElementById("modal-text").textContent = 'Feeling lucky? Try something random!';
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    document.getElementById("backBtn").onclick = function () {
+        modal.style.display = "none";
+    }
+
+    document.getElementById("generateBtn").onclick = function () {
+        modal.style.display = "none";
+    }
+});
+
+// const clientId = "d774e69457df4fafbd90d6fb8208be05"
+// const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
+// let accessToken = localStorage.getItem("access_token")
+// let challenge = localStorage.getItem("challenge")
+// document.getElementById('generateBtn').addEventListener('onClick', async () => {
+//     location.href = redirectUri
+// })
