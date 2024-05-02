@@ -98,6 +98,6 @@ const clientId = "d774e69457df4fafbd90d6fb8208be05"
 const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
 let accessToken = localStorage.getItem("access_token")
 let challenge = localStorage.getItem("challenge")
-document.getElementById('generateBtn').addEventListener('click', async () => {
+document.getElementById('generateBtn').addEventListener('onClick', async () => {
     location.href = redirectUri
 })
