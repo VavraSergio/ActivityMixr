@@ -88,14 +88,6 @@
             localStorage.setItem("code_verifier", verifier);
             requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
         })
-
-        document.getElementById("spotify-lougout").addEventListener("click", async() => {
-            event.preventDefault();
-
-            localStorage.removeItem("accessToken")
-            localStorage.removeItem("code_verifier")
-            window.location.reload()
-        })
     </script>
 
 </body>
