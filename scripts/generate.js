@@ -50,7 +50,7 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
 
     modal.style.display = "block";
 
-    var randomNumber = Math.floor(Math.random() * 2) + 1;
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
 
     if (randomNumber === 1) {
         document.getElementById("modal-text").textContent = 'Go gambling!';
