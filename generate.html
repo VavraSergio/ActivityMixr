@@ -80,10 +80,29 @@
     <script src="scripts/generate.js"></script>
     <script src="scripts/spotify.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Your code here
-            console.log("Page loaded!");
-        });</script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get('code');
+        const codeVerifier = localStorage.getItem('code_verifier');
+
+        const payload = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                grant_type: 'authorization_code',
+                client_id: 'd774e69457df4fafbd90d6fb8208be05',
+                redirect_uri: 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html',
+                code_verifier: codeVerifier,
+                code: authCode, // From the URL
+            }),
+        }
+
+        const response = await fetch('https://accounts.spotify.com/api/token', payload);
+        const data = await response.json();
+
+        const accessToken = data.access_token;
+    </script>
 </body>
 
 </html>
