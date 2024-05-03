@@ -114,7 +114,7 @@ document.getElementById('submission').addEventListener('click', function (event)
             localStorage.setItem("playlist", JSON.stringify(playlist));
             console.log("Playlist generated successfully:", playlist);
         } catch (error) {
-            console.error('Error generating playlist:');
+            console.error('Error generating playlist:', error);
         }
         modal.style.display = "none";
     }
