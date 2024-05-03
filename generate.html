@@ -101,24 +101,24 @@
                 window.location.href = "index.html";
             }
 
-            const payload = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    grant_type: 'authorization_code',
-                    client_id: 'd774e69457df4fafbd90d6fb8208be05',
-                    redirect_uri: 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html',
-                    code_verifier: codeVerifier,
-                    code: authCode,
-                }).toString(),
+            const getAccessToken = async () => {
+                try {
+                    console.log(authCode)
+                    const data = await getToken(clientId, redirectUri, authCode, codeVerifier);
+                    console.log(data);
+
+                    // Clear the code verifier from local storage
+                    localStorage.removeItem("code_verifier");
+
+                    // Update the token in local storage
+                    localStorage.setItem("access_token", data.access_token);
+                    localStorage.setItem("refresh_token", data.refresh_token);
+                    localStorage.setItem("expiry_time", Date.now() + (data.expires_in * 1000));
+                } catch (error) {
+                    alert(error);
+                }
             }
-
-            const response = await fetch('https://accounts.spotify.com/api/token', payload);
-            const data = await response.json();
-
-            const accessToken = data.access_token;
+            getAccessToken();
         })();
     </script>
 </body>
