@@ -98,7 +98,7 @@ document.getElementById('submission').addEventListener('click', function (event)
             return;
         }
 
-        const query = encodeURIComponent(data.activity);
+        const query = encodeURIComponent(activity);
 
         const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
 
