@@ -115,7 +115,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         });
 
     document.getElementById("modal-text").textContent = 'Feeling lucky? Try something random!';
-
+}); //Make sure this is in the right spot; i did my best to put it where i think you meant to put it
     span.onclick = function () {
         modal.style.display = "none";
     }
@@ -144,5 +144,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         let dataString = JSON.stringify(data)
         let playlistBlob = new Blob( [ dataString ], { type: "applications/json" } )
         localStorage.setItem( "playlist", playlistBlob )
+
+        modal.style.display = "none"; // hopefully this triggers the generate option to go away
     }
-});
