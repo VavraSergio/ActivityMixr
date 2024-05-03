@@ -185,7 +185,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist", JSON.stringify(playlist));
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description);
-                localStorage.setItem("playlist-image", playlist.images[1]); //this is probably wrong, but trying it just in case
+                localStorage.setItem("playlist-image", playlist.images.url);
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
                 console.error('Error generating playlist:', error);
