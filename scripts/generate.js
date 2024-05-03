@@ -2,7 +2,7 @@
 
 document.getElementById('submission').addEventListener('click', function (event) {
     event.preventDefault();
-
+    let activity;
 
     let participants = document.getElementById('participants').value;
     let apiUrl = 'https://www.boredapi.com/api/activity?';
@@ -61,8 +61,6 @@ document.getElementById('submission').addEventListener('click', function (event)
         }, "2000");
         return;
     } else {
-
-        let activity;
 
         fetch(apiUrl)
             .then(response => response.json())
