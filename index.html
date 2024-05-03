@@ -76,27 +76,38 @@
     <script src="scripts/spotify.js"></script>
 
     <script>
-        const clientId = "d774e69457df4fafbd90d6fb8208be05"
-        const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html"
+        // const clientId = "d774e69457df4fafbd90d6fb8208be05"
+        // const redirectUri = "https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html"
 
+        // document.getElementById("spotify-login").addEventListener("click", async () => {
+        //     event.preventDefault();
+        //     [verifier, challenge] = await generateCodeChallenge();
+        //     localStorage.setItem("code_verifier", verifier);
+        //     localStorage.setItem("challenge", challenge);
+        //     requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
+        // })
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
-            [verifier, challenge] = await generateCodeChallenge();
-            localStorage.setItem("code_verifier", verifier);
-            localStorage.setItem("challenge", challenge);
-            requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
-        })
+            [code_verifier, code_challenge] = await generateCodeChallenge();
+            window.localStorage.setItem("code_verifier", code_verifier);
 
-        window.addEventListener('message', event => {
-            if (event.origin !== 'https://wanghci.github.io') {
-                return;
+            const clientId = "d774e69457df4fafbd90d6fb8208be05"
+            const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
+
+            const scope = "user-read-private user-read-email playlist-modify-private playlist-modify-public"; // Specifies what user data your app can access!
+            const authUrl = new URL("https://accounts.spotify.com/authorize")
+
+            const params = {
+                response_type: 'code',
+                client_id: clientId,
+                scope: scope,
+                code_challenge_method: 'S256',
+                code_challenge: code_challenge, // The hashed code verifier
+                redirect_uri: redirectUri,
             }
 
-            const { access_token } = event.data;
-            if (access_token) {
-                localStorage.setItem('access_token', access_token);
-                console.log('Access token stored:', access_token);
-            }
+            authUrl.search = new URLSearchParams(params).toString();
+            window.location.href = authUrl.toString(); // Redirect the user
         });
     </script>
 
