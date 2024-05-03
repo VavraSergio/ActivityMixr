@@ -1,4 +1,4 @@
-document.getElementById('activityForm').addEventListener('submit', function (event) {
+document.getElementById('submission').addEventListener('click', function (event) {
     event.preventDefault();
 
 
@@ -75,6 +75,8 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
             });
     }
 
+
+
     span.onclick = function () {
         modal.style.display = "none";
     }
@@ -83,7 +85,34 @@ document.getElementById('activityForm').addEventListener('submit', function (eve
         modal.style.display = "none";
     }
 
-    document.getElementById("generateBtn").onclick = function () {
+    document.getElementById("generateBtn").onclick = async function () {
+        const accessToken = localStorage.getItem('access_token');
+
+        if (!accessToken) {
+            console.error("Spotify access token not found!");
+            return;
+        }
+
+        const query = encodeURIComponent(data.activity);
+
+        const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
+
+        const payload = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        }
+
+        try {
+            const response = await fetch(apiUrl, payload);
+            const data = await response.json();
+            const playlist = data.playlists.items[0];
+            localStorage.setItem("playlist", JSON.stringify(playlist));
+            console.log("Playlist generated successfully:", playlist);
+        } catch (error) {
+            console.error('Error generating playlist:');
+        }
         modal.style.display = "none";
     }
 });
@@ -113,38 +142,35 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-
-    document.getElementById("modal-text").textContent = 'Feeling lucky? Try something random!';
-
     span.onclick = function () {
         modal.style.display = "none";
     }
 }); //Make sure this is in the right spot; i did my best to put it where i think you meant to put it
-    document.getElementById("backBtn").onclick = function () {
-        modal.style.display = "none";
+document.getElementById("backBtn").onclick = function () {
+    modal.style.display = "none";
+}
+
+document.getElementById("generateBtn").onclick = async function () {
+    const payload = {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer',
+        },
+        body: new URLSearchParams({
+            q: data.activity, // for whatever reason, data.activity is not accessible;
+            type: "playlist",
+            market: "US",
+            limit: 1
+        })
     }
 
-    document.getElementById("generateBtn").onclick = async function () {
-        const payload = {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer',    
-            },
-            body: new URLSearchParams({
-                q: data.activity, // for whatever reason, data.activity is not accessible;
-                type: "playlist",
-                market: "US",
-                limit: 1
-            })
-        }
+    let apiUrl = 'https://api.spotify.com/v1/search?'
+    const response = await fetch(apiUrl, payload)
+    const data = await response.json()
+    let dataString = JSON.stringify(data)
+    let playlistBlob = new Blob([dataString], { type: "applications/json" })
+    localStorage.setItem("playlist", playlistBlob)
 
-        let apiUrl = 'https://api.spotify.com/v1/search?'
-        const response = await fetch( apiUrl, payload )
-        const data = await response.json()
-        let dataString = JSON.stringify(data)
-        let playlistBlob = new Blob( [ dataString ], { type: "applications/json" } )
-        localStorage.setItem( "playlist", playlistBlob )
-
-        modal.style.display = "none"; // hopefully this triggers the generate option to go away
-    }
+    modal.style.display = "none"; // hopefully this triggers the generate option to go away
+}
 //original }); was right here
