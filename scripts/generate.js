@@ -187,6 +187,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist-description", playlist.description);
                 localStorage.setItem("playlist-image", playlist.images[0]);
                 console.log("Playlist generated successfully:", playlist);
+                console.log(playlist.href)
             } catch (error) {
                 console.error('Error generating playlist:', error);
             }
