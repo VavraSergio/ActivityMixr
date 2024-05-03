@@ -139,10 +139,10 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         }
 
         let apiUrl = 'https://api.spotify.com/v1/search?'
-
         const response = await fetch( apiUrl, payload )
         const data = await response.json()
-    
-        return data;
+        let dataString = JSON.stringify(data)
+        let playlistBlob = new Blob( [ dataString ], { type: "applications/json" } )
+        localStorage.setItem( "playlist", playlistBlob )
     }
 });
