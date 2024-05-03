@@ -111,8 +111,8 @@ document.getElementById('submission').addEventListener('click', function (event)
 
         try {
             const response = await fetch(apiUrl, payload);
-            const data = await response.json();
-            const playlist = data.playlists.items[0];
+            const responseData = await response.json();
+            const playlist = responseData.playlists.items[0];
             localStorage.setItem("playlist", JSON.stringify(playlist));
             console.log("Playlist generated successfully:", playlist);
         } catch (error) {
