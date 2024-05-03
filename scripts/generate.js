@@ -89,39 +89,41 @@ document.getElementById('submission').addEventListener('click', function (event)
 
     document.getElementById("generateBtn").onclick = async function () {
 
+        if (document.getElementById("modal-text").textContent === 'No activity found with those parameters!') {
+            modal.style.display = "none";
 
-        const accessToken = localStorage.getItem('access_token');
+            const accessToken = localStorage.getItem('access_token');
 
-        if (!accessToken) {
-            console.error("Spotify access token not found!");
-            return;
-        }
-
-        const query = encodeURIComponent(activity);
-
-        const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
-
-        console.log('made it this far');
-        const payload = {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`
+            if (!accessToken) {
+                console.error("Spotify access token not found!");
+                return;
             }
-        }
-        console.log('and to here!');
 
-        try {
-            const response = await fetch(apiUrl, payload);
-            const responseData = await response.json();
-            const playlist = responseData.playlists.items[0];
-            localStorage.setItem("playlist", JSON.stringify(playlist));
-            console.log("Playlist generated successfully:", playlist);
-        } catch (error) {
-            console.error('Error generating playlist:', error);
+            const query = encodeURIComponent(activity);
+
+            const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
+
+            console.log('made it this far');
+            const payload = {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            }
+            console.log('and to here!');
+
+            try {
+                const response = await fetch(apiUrl, payload);
+                const responseData = await response.json();
+                const playlist = responseData.playlists.items[0];
+                localStorage.setItem("playlist", JSON.stringify(playlist));
+                console.log("Playlist generated successfully:", playlist);
+            } catch (error) {
+                console.error('Error generating playlist:', error);
+            }
+            modal.style.display = "none";
         }
-        modal.style.display = "none";
-    }
-});
+    });
 
 document.getElementById('accessibility').addEventListener('input', function () {
     document.getElementById('accessibilityValue').textContent = this.value;
