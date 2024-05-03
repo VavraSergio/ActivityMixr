@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Your code here
+    console.log("Page loaded!");
+});
+
 document.getElementById('submission').addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -86,6 +91,8 @@ document.getElementById('submission').addEventListener('click', function (event)
     }
 
     document.getElementById("generateBtn").onclick = async function () {
+
+
         const accessToken = localStorage.getItem('access_token');
 
         if (!accessToken) {
