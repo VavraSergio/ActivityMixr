@@ -187,7 +187,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist-description", playlist.description);
                 localStorage.setItem("playlist-image", playlist.images[0]);
                 console.log("Playlist generated successfully:", playlist);
-                console.log("playlist-image", `https://api.spotify.com/v1/playlists/q=${playlist.id}/images`)
+                console.log("playlist-image", `https://api.spotify.com/v1/playlists/${playlist.id}/images`)
             } catch (error) {
                 console.error('Error generating playlist:', error);
             }
