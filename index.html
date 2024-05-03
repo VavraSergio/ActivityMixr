@@ -88,8 +88,8 @@
         // })
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
-            [code_verifier, code_challenge] = await generateCodeChallenge();
-            window.localStorage.setItem("code_verifier", code_verifier);
+            [verifier, code_challenge] = await generateCodeChallenge();
+            window.localStorage.setItem("code_verifier", verifier);
 
             const clientId = "d774e69457df4fafbd90d6fb8208be05"
             const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';

@@ -62,6 +62,8 @@ document.getElementById('submission').addEventListener('click', function (event)
         return;
     } else {
 
+        let activity;
+
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
@@ -71,13 +73,12 @@ document.getElementById('submission').addEventListener('click', function (event)
                     return;
                 }
                 document.getElementById("modal-text").textContent = data.activity;
+                activity = data.activity;
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
     }
-
-
 
     span.onclick = function () {
         modal.style.display = "none";
