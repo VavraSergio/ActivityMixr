@@ -87,7 +87,17 @@
             requestAuthCode(clientId, redirectUri, challenge, "user-read-private user-read-email playlist-modify-private playlist-modify-public")
         })
 
-        localStorage.setItem('access_token', access_token);
+        window.addEventListener('message', event => {
+            if (event.origin !== 'https://wanghci.github.io') {
+                return;
+            }
+
+            const { access_token } = event.data;
+            if (access_token) {
+                localStorage.setItem('access_token', access_token);
+                console.log('Access token stored:', access_token);
+            }
+        });
     </script>
 
 </body>
