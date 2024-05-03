@@ -48,12 +48,12 @@ document.getElementById('submission').addEventListener('click', function (event)
 
     var span = document.getElementsByClassName("close")[0];
 
-    modal.style.display = "block";
 
     var randomNumber = Math.floor(Math.random() * 10) + 1;
 
     if (randomNumber === 1) {
         document.getElementById("modal-text").textContent = 'Go gambling!';
+        modal.style.display = "block";
         setTimeout(() => {
             window.location.href = "https://wanghci.github.io/project-milestone-2-gambler-s-paradise/";
         }, "2000");
@@ -66,10 +66,13 @@ document.getElementById('submission').addEventListener('click', function (event)
 
                 if (!data.activity || data.activity === '') {
                     document.getElementById("modal-text").textContent = 'No activity found with those parameters!';
+                    modal.style.display = "block";
                     return;
                 }
                 document.getElementById("modal-text").textContent = data.activity;
                 activity = data.activity;
+                modal.style.display = "block";
+
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
