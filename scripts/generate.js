@@ -109,8 +109,6 @@ document.getElementById('submission').addEventListener('click', function (event)
 
         try {
             const response = await fetch(apiUrl, payload);
-            console.log(response);
-            console.log(await response.text());
             const responseData = await response.json();
             const playlist = responseData.playlists.items[0];
             localStorage.setItem("playlist", JSON.stringify(playlist));
