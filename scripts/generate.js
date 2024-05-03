@@ -131,7 +131,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 'Authorization': 'Bearer',    
             },
             body: new URLSearchParams({
-                q: data.activity,
+                q: data.activity, // for whatever reason, data.activity is not accessible;
                 type: "playlist",
                 market: "US",
                 limit: 1
@@ -147,3 +147,4 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 
         modal.style.display = "none"; // hopefully this triggers the generate option to go away
     }
+//original }); was right here
