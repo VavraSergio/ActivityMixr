@@ -97,12 +97,14 @@ document.getElementById('submission').addEventListener('click', function (event)
 
         const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
 
+        console.log('made it this far');
         const payload = {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }
         }
+        console.log('and to here!');
 
         try {
             const response = await fetch(apiUrl, payload);
