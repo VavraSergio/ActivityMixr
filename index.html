@@ -88,7 +88,7 @@
         // })
         document.getElementById("spotify-login").addEventListener("click", async () => {
             event.preventDefault();
-            [verifier, code_challenge] = await generateCodeChallenge();
+            [verifier, challenge] = await generateCodeChallenge();
             window.localStorage.setItem("code_verifier", verifier);
 
             const clientId = "d774e69457df4fafbd90d6fb8208be05"
@@ -102,7 +102,7 @@
                 client_id: clientId,
                 scope: scope,
                 code_challenge_method: 'S256',
-                code_challenge: code_challenge, // The hashed code verifier
+                code_challenge: challenge, // The hashed code verifier
                 redirect_uri: redirectUri,
             }
 
