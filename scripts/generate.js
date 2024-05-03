@@ -144,6 +144,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("modal-text").textContent = data.activity;
+            localStorage.setItem( "playlist-name", data.activity );
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -182,6 +183,9 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const responseData = await response.json();
                 const playlist = responseData.playlists.items[0];
                 localStorage.setItem("playlist", JSON.stringify(playlist));
+                localStorage.setItem("playlistID", playlist.id);
+                localStorage.setItem("playlist-description", playlist.description);
+                localStorage.setItem("playlist-image", playlist.images[1]); //this is probably wrong, but trying it just in case
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
                 console.error('Error generating playlist:', error);
