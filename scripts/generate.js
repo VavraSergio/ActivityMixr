@@ -1,5 +1,3 @@
-
-
 document.getElementById('submission').addEventListener('click', function (event) {
     event.preventDefault();
     let activity;

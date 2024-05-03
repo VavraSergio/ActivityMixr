@@ -96,6 +96,8 @@
             // (2) Get the code verifier from local storage
 
             const codeVerifier = localStorage.getItem("code_verifier");
+            console.log(codeVerifier);
+
 
             const getAccessToken = async () => {
                 try {
