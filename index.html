@@ -90,7 +90,6 @@
             event.preventDefault();
             [verifier, challenge] = await generateCodeChallenge();
             localStorage.setItem("code_verifier", verifier);
-            requestAuthCode(clientId, redirectUri, challenge, "user-library-modify");
 
             const clientId = "d774e69457df4fafbd90d6fb8208be05"
             const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
