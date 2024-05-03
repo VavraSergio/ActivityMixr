@@ -115,11 +115,11 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         });
 
     document.getElementById("modal-text").textContent = 'Feeling lucky? Try something random!';
-}); //Make sure this is in the right spot; i did my best to put it where i think you meant to put it
+
     span.onclick = function () {
         modal.style.display = "none";
     }
-
+}); //Make sure this is in the right spot; i did my best to put it where i think you meant to put it
     document.getElementById("backBtn").onclick = function () {
         modal.style.display = "none";
     }
