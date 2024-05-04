@@ -192,7 +192,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 console.log("Playlist generated successfully:", playlist);
                 for(const [key, value] of Object.entries(spotifyUrl))
                     {
-                        console.log(key, value)
+                        localStorage.setItem("spotify-url", value);
                     }
             } catch (error) {
                 console.error('Error generating playlist:', error);
