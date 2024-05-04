@@ -178,22 +178,25 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 }
             }
 
-            const imageUrl = `https://api.spotify.com/v1/playlists/${playlist.id}/images`
-            const imagePayload = {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            }
+
 
             try {
                 const response = await fetch(apiUrl, payload);
                 const responseData = await response.json();
+                const playlist = responseData.playlists.items[0];
+
+                const imageUrl = `https://api.spotify.com/v1/playlists/${playlist.id}/images`
+                const imagePayload = {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                }
                 const imageResponse = await fetch(imageUrl, imagePayload);
                 const imageResponseData = await imageResponse.json();
                 const image = imageResponseData.images[0];
                 console.log("image", JSON.stringify(image));
-                const playlist = responseData.playlists.items[0];
+
                 localStorage.setItem("playlist", JSON.stringify(playlist));
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description);
