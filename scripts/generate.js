@@ -192,7 +192,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.removeItem("playlist")
                 localStorage.removeItem("playlistID")
                 localStorage.removeItem("playlist-description")
-                localtor
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", JSON.stringify(imageUrls))
