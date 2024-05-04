@@ -179,10 +179,12 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 }
             }
 
+            counter = 0
             try {
                 const response = await fetch(apiUrl, payload);
                 const responseData = await response.json();
-                const playlist = responseData.playlists.items[0]; //the object
+                const playlist = responseData.playlists.items[counter]; //the object
+                counter++
                 const imageUrls = playlist.images.map(image => image.url)
                 const spotifyUrl = playlist['external_urls']['spotify']
 
