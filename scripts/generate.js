@@ -112,9 +112,8 @@ document.getElementById('submission').addEventListener('click', function (event)
             try {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
-                const playlist = responseData.playlists.items[0]; //the object
+                const playlist = responseData.playlists.items[0];
                 const imageUrl = playlist.images.length > 0 ? playlist.images[0].url : "" 
-                // const imageUrl = playlist.images.map(image => image.url)
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
@@ -125,7 +124,7 @@ document.getElementById('submission').addEventListener('click', function (event)
                 localStorage.removeItem("playlist-description")
 
                 localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", JSON.stringify(imageUrl))
+                localStorage.setItem("image-url", imageUrl)
                 localStorage.setItem("playlist", JSON.stringify(playlist))
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description)
@@ -200,7 +199,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const playlist = responseData.playlists.items[0]; //the object
                 //ternary operator, used this in 261 and i'm pretty sure this is how it works
                 const imageUrl = playlist.images.length > 0 ? playlist.images[0].url : "" 
-                // const imageUrls = playlist.images.map(image => image.url)
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
@@ -211,7 +209,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.removeItem("playlist-description")
 
                 localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", JSON.stringify(imageUrl))
+                localStorage.setItem("image-url", imageUrl)
                 localStorage.setItem("playlist", JSON.stringify(playlist))
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description)
