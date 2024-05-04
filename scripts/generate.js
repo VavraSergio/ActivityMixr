@@ -183,7 +183,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const responseData = await response.json();
                 const playlist = responseData.playlists.items[0]; //the object
                 const imageUrls = playlist.images.map(image => image.url)
-                const spotifyUrl = playlist.external_urls.spotify
+                const spotifyUrl = playlist['external_urls']['spotify']
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrls)
                 localStorage.setItem("playlist", JSON.stringify(playlist));
