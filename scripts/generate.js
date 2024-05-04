@@ -201,26 +201,33 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                let imageUrl = "images/default.png"
-                if( playlist && playlist.images && playlist.images.length > 0 )
+                if( playlist )
                 {
-                    imageUrl = playlist.images[0].url
-                }
-                const spotifyUrl = playlist['external_urls']['spotify']
+                    let imageUrl = "images/default.png"
+                    let spotifyUrl = "https://open.spotify.com/playlist/" + playlist.id
+                    if( playlist.images && playlist.images.length > 0 )
+                    {
+                        imageUrl = playlist.images[0].url
+                    }
+                    if( playlist.external_urls.length > 0)
+                    {
+                        spotifyUrl = playlist['external_urls']['spotify']
+                    }
 
-                // Clear existing localStorage items
-                localStorage.removeItem("spotify-url")
-                localStorage.removeItem("image-url")
-                localStorage.removeItem("playlist-description")
+                    // Clear existing localStorage items
+                    localStorage.removeItem("spotify-url")
+                    localStorage.removeItem("image-url")
+                    localStorage.removeItem("playlist-description")
 
-                localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", imageUrl)
-                localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
-                if( playlist && playlist.description && playlist.description.length > 0)
-                {
-                    localStorage.setItem("playlist-description", playlist.description)
+                    localStorage.setItem("spotify-url", spotifyUrl)
+                    localStorage.setItem("image-url", imageUrl)
+                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
+                    if( playlist.description && playlist.description.length > 0)
+                    {
+                        localStorage.setItem("playlist-description", playlist.description)
+                    }
+                    console.log("Playlist generated successfully:", playlist)
                 }
-                console.log("Playlist generated successfully:", playlist)
             } catch (error) {
                 console.error('Error generating playlist:', error)
             }
