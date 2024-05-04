@@ -181,11 +181,13 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 }
             }
 
+            let counter = 0
             try {
 
                 let response = await fetch(apiUrl, payload);
                 let responseData = await response.json();
-                let playlist = responseData.playlists.items[0]; //the object
+                let playlist = responseData.playlists.items[counter]; //the object
+                counter++
                 let imageUrls = playlist.images.map(image => image.url)
                 let spotifyUrl = playlist['external_urls']['spotify']
 
@@ -202,6 +204,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist-description", playlist.description);
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
+                counter++
                 console.error('Error generating playlist:', error);
             }
         }
