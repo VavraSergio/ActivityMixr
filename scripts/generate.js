@@ -184,6 +184,9 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const response = await fetch(apiUrl, payload);
                 const responseData = await response.json();
                 const playlist = responseData.playlists.items[0];
+                localStorage.setItem("playlist", JSON.stringify(playlist));
+                localStorage.setItem("playlistID", playlist.id);
+                localStorage.setItem("playlist-description", playlist.description);
 
                 const imageUrl = `https://api.spotify.com/v1/playlists/${playlist.id}/images`
                 const imagePayload = {
@@ -196,10 +199,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const imageResponseData = await imageResponse.json();
                 const image = imageResponseData.images[0];
                 console.log("image", JSON.stringify(image));
-
-                localStorage.setItem("playlist", JSON.stringify(playlist));
-                localStorage.setItem("playlistID", playlist.id);
-                localStorage.setItem("playlist-description", playlist.description);
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
                 console.error('Error generating playlist:', error);
