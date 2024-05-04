@@ -167,11 +167,9 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 return;
             }
 
-            // const query = encodeURIComponent(activity);
-            let query = encodeURIComponent(activity);
+            const query = encodeURIComponent(activity);
 
-            // const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
-            let apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
+            const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
 
 
             const payload = {
@@ -181,13 +179,11 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 }
             }
 
-            let counter = 0
             try {
 
                 let response = await fetch(apiUrl, payload);
                 let responseData = await response.json();
-                let playlist = responseData.playlists.items[counter]; //the object
-                counter++
+                let playlist = responseData.playlists.items[0]; //the object
                 let imageUrls = playlist.images.map(image => image.url)
                 let spotifyUrl = playlist['external_urls']['spotify']
 
