@@ -187,11 +187,21 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
-                localStorage.removeItem("spotify-url");
-                localStorage.removeItem("image-url");
-                localStorage.removeItem("playlist");
-                localStorage.removeItem("playlistID");
-                localStorage.removeItem("playlist-description");
+                if( localStorage.getItem( 'spotify-url' ) )
+                    {
+                        localStorage.removeItem("spotify-url");
+                    }
+                
+                if( localStorage.getItem( 'image-url' ) )
+                    {
+                        localStorage.removeItem("image-url");
+                    }
+
+                if( localStorage.getItem( 'playlist-description' ) )
+                    {
+                        localStorage.removeItem("playlist-description");
+                    }
+
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", JSON.stringify(imageUrls))
