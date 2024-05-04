@@ -158,8 +158,8 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("modal-text").textContent = data.activity;
-            // localStorage.setItem("playlist-name", data.activity);
-            generatePlaylist(data.activity)
+            localStorage.setItem("playlist-name", data.activity);
+            luckyGen(localStorage.getItem("playlist-name"))
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -171,56 +171,55 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         modal.style.display = "none";
     }
 
-    async function generatePlaylist(activity) 
-    {
-        if (!(document.getElementById("modal-text").textContent === 'No activity found with those parameters!')) {
+    async function luckyGen(activity) {
+    if (!(document.getElementById("modal-text").textContent === 'No activity found with those parameters!')) {
 
-            const accessToken = localStorage.getItem('access_token');
+        const accessToken = localStorage.getItem('access_token');
 
-            if (!accessToken) {
-                console.error("Spotify access token not found!");
-                return;
-            }
+        if (!accessToken) {
+            console.error("Spotify access token not found!");
+            return;
+        }
 
-            const query = encodeURIComponent(activity);
+        const query = encodeURIComponent(activity);
 
-            const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
+        const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
 
 
-            const payload = {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            }
-
-            try {
-                const response = await fetch(apiUrl, payload)
-                const responseData = await response.json()
-                const playlist = responseData.playlists.items[0]; //the object
-                const imageUrls = playlist.images.map(image => image.url)
-                const spotifyUrl = playlist['external_urls']['spotify']
-
-                // Clear existing localStorage items
-                localStorage.removeItem("spotify-url")
-                localStorage.removeItem("image-url")
-                localStorage.removeItem("playlist")
-                localStorage.removeItem("playlistID")
-                localStorage.removeItem("playlist-description")
-
-                localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", JSON.stringify(imageUrls))
-                localStorage.setItem("playlist", JSON.stringify(playlist))
-                localStorage.setItem("playlistID", playlist.id);
-                localStorage.setItem("playlist-description", playlist.description)
-                console.log("Playlist generated successfully:", playlist)
-            } catch (error) {
-                console.error('Error generating playlist:', error)
+        const payload = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
             }
         }
-        modal.style.display = "none";
+
+        try {
+            const response = await fetch(apiUrl, payload)
+            const responseData = await response.json()
+            const playlist = responseData.playlists.items[0]; //the object
+            const imageUrls = playlist.images.map(image => image.url)
+            const spotifyUrl = playlist['external_urls']['spotify']
+
+            // Clear existing localStorage items
+            localStorage.removeItem("spotify-url")
+            localStorage.removeItem("image-url")
+            localStorage.removeItem("playlist")
+            localStorage.removeItem("playlistID")
+            localStorage.removeItem("playlist-description")
+
+            localStorage.setItem("spotify-url", spotifyUrl)
+            localStorage.setItem("image-url", JSON.stringify(imageUrls))
+            localStorage.setItem("playlist", JSON.stringify(playlist))
+            localStorage.setItem("playlistID", playlist.id);
+            localStorage.setItem("playlist-description", playlist.description)
+            console.log("Playlist generated successfully:", playlist)
+        } catch (error) {
+            console.error('Error generating playlist:', error)
+        }
     }
-}) 
+    modal.style.display = "none";
+}
+})
 //     }
 //     document.getElementById("generateBtn").onclick = async function () {
 
