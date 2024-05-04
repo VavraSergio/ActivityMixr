@@ -180,18 +180,11 @@ document.getElementById('lucky').addEventListener('click', function (event) {
             }
 
             try {
-
-                let response = await fetch(apiUrl, payload);
-                let responseData = await response.json();
-                let playlist = responseData.playlists.items[0]; //the object
-                let imageUrls = playlist.images.map(image => image.url)
-                let spotifyUrl = playlist['external_urls']['spotify']
-
-                // const response = await fetch(apiUrl, payload);
-                // const responseData = await response.json();
-                // const playlist = responseData.playlists.items[0]; //the object
-                // const imageUrls = playlist.images.map(image => image.url)
-                // const spotifyUrl = playlist['external_urls']['spotify']
+                const response = await fetch(apiUrl, payload);
+                const responseData = await response.json();
+                const playlist = responseData.playlists.items[0]; //the object
+                const imageUrls = playlist.images.map(image => image.url)
+                const spotifyUrl = playlist['external_urls']['spotify']
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrls)
