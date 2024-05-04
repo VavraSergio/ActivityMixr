@@ -140,7 +140,7 @@ document.getElementById('submission').addEventListener('click', function (event)
                         }
                         console.log("Playlist generated successfully:", playlist)
                     }
-            } catch (error) {
+                } catch (error) {
                 console.error('Error generating playlist:', error)
             }
         }
@@ -210,16 +210,16 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const playlist = responseData.playlists.items[0];
                 if( playlist )
                 {
-                    let imageUrl = "images/default.png"
-                    let spotifyUrl = "https://open.spotify.com/playlist/" + playlist.id
-                    if( playlist.images && playlist.images.length > 0 )
-                    {
+                    // let imageUrl = "images/default.png"
+                    // let spotifyUrl = "https://open.spotify.com/playlist/" + playlist.id
+                    // if( playlist.images && playlist.images.length > 0 )
+                    // {
                         imageUrl = playlist.images[0].url
-                    }
-                    if( playlist.external_urls.length > 0)
-                    {
+                    // }
+                    // if( playlist.external_urls.length > 0)
+                    // {
                         spotifyUrl = playlist['external_urls']['spotify']
-                    }
+                    // }
 
                     // Clear existing localStorage items
                     localStorage.removeItem("spotify-url")
