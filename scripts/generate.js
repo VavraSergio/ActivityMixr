@@ -113,7 +113,11 @@ document.getElementById('submission').addEventListener('click', function (event)
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                const imageUrl = playlist.images.length > 0 ? playlist.images[0].url : "" 
+                let imageUrl = "images/default.png"
+                if ( playlist.images && playlist.images.length > 0 )
+                    {
+                        imageUrl = playlist.images[0].url
+                    }
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
@@ -192,9 +196,12 @@ document.getElementById('lucky').addEventListener('click', function (event) {
             try {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
-                const playlist = responseData.playlists.items[0]; //the object
-                //ternary operator, used this in 261 and i'm pretty sure this is how it works
-                const imageUrl = playlist.images.length > 0 ? playlist.images[0].url : "" 
+                const playlist = responseData.playlists.items[0];
+                let imageUrl = "images/default.png"
+                if ( playlist.images && playlist.images.length > 0 )
+                    {
+                        imageUrl = playlist.images[0].url
+                    }
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
