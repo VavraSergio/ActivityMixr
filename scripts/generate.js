@@ -187,18 +187,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist", JSON.stringify(playlist));
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description);
-
-                const imageUrl = `https://api.spotify.com/v1/playlists/${playlist.id}/images`
-                const imagePayload = {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                }
-                const imageResponse = await fetch(imageUrl, imagePayload);
-                const imageResponseData = await imageResponse.json();
-                const image = imageResponseData.items[0];
-                console.log("image", JSON.stringify(image));
+                console.log(playlist.images[1].toString());
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
                 console.error('Error generating playlist:', error);
