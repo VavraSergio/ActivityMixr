@@ -136,19 +136,6 @@ document.getElementById('submission').addEventListener('click', function (event)
         modal.style.display = "none";
     }
 });
-//             try {
-//                 const response = await fetch(apiUrl, payload);
-//                 const responseData = await response.json();
-//                 const playlist = responseData.playlists.items[0];
-//                 localStorage.setItem("playlist", JSON.stringify(playlist));
-//                 console.log("Playlist generated successfully:", playlist);
-//             } catch (error) {
-//                 console.error('Error generating playlist:', error);
-//             }
-//         }
-//         modal.style.display = "none";
-//     }
-// });
 
 document.getElementById('accessibility').addEventListener('input', function () {
     document.getElementById('accessibilityValue').textContent = this.value;
@@ -207,8 +194,8 @@ document.getElementById('lucky').addEventListener('click', function (event) {
             }
 
             try {
-                const response = await fetch(apiUrl, payload);
-                const responseData = await response.json();
+                const response = await fetch(apiUrl, payload)
+                const responseData = await response.json()
                 const playlist = responseData.playlists.items[0]; //the object
                 const imageUrls = playlist.images.map(image => image.url)
                 const spotifyUrl = playlist['external_urls']['spotify']
@@ -221,13 +208,13 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.removeItem("playlist-description")
 
                 localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", JSON.stringify( imageUrls ) )
-                localStorage.setItem("playlist", JSON.stringify(playlist));
+                localStorage.setItem("image-url", JSON.stringify(imageUrls))
+                localStorage.setItem("playlist", JSON.stringify(playlist))
                 localStorage.setItem("playlistID", playlist.id);
-                localStorage.setItem("playlist-description", playlist.description);
-                console.log("Playlist generated successfully:", playlist);
+                localStorage.setItem("playlist-description", playlist.description)
+                console.log("Playlist generated successfully:", playlist)
             } catch (error) {
-                console.error('Error generating playlist:', error);
+                console.error('Error generating playlist:', error)
             }
         }
         modal.style.display = "none";
