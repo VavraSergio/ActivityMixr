@@ -169,7 +169,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 
             const query = encodeURIComponent(activity);
 
-            const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US&limit=1`;
+            const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=playlist&market=US`;
 
 
             const payload = {
