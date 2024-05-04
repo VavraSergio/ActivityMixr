@@ -119,14 +119,10 @@ document.getElementById('submission').addEventListener('click', function (event)
                 // Clear existing localStorage items
                 localStorage.removeItem("spotify-url")
                 localStorage.removeItem("image-url")
-                localStorage.removeItem("playlist")
-                localStorage.removeItem("playlistID")
                 localStorage.removeItem("playlist-description")
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrl)
-                localStorage.setItem("playlist", JSON.stringify(playlist))
-                localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description)
                 console.log("Playlist generated successfully:", playlist)
             } catch (error) {
@@ -204,14 +200,10 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 // Clear existing localStorage items
                 localStorage.removeItem("spotify-url")
                 localStorage.removeItem("image-url")
-                localStorage.removeItem("playlist")
-                localStorage.removeItem("playlistID")
                 localStorage.removeItem("playlist-description")
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrl)
-                localStorage.setItem("playlist", JSON.stringify(playlist))
-                localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description)
                 console.log("Playlist generated successfully:", playlist)
             } catch (error) {
