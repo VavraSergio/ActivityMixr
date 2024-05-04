@@ -183,8 +183,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const responseData = await response.json();
                 const playlist = responseData.playlists.items[0];
 
-                const playlistImage = playlist.images[0].url
-                localStorage.setItem("playlist-image", JSON.stringify(playlistImage))
                 // const playlistImg = playlist.images[ 'url' ]
                 // const imgResponse = await fetch(playlistImg, payload)
                 // const imgResponseData = await imgResponse.json()
