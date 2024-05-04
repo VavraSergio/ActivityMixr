@@ -179,14 +179,19 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 }
             }
 
-            counter = 0
             try {
                 const response = await fetch(apiUrl, payload);
                 const responseData = await response.json();
-                const playlist = responseData.playlists.items[counter]; //the object
-                counter++
+                const playlist = responseData.playlists.items[0]; //the object
                 const imageUrls = playlist.images.map(image => image.url)
                 const spotifyUrl = playlist['external_urls']['spotify']
+
+                // Clear existing localStorage items
+                localStorage.removeItem("spotify-url");
+                localStorage.removeItem("image-url");
+                localStorage.removeItem("playlist");
+                localStorage.removeItem("playlistID");
+                localStorage.removeItem("playlist-description");
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrls)
