@@ -122,9 +122,7 @@ document.getElementById('submission').addEventListener('click', function (event)
                 localStorage.removeItem("playlist")
                 localStorage.removeItem("playlistID")
                 localStorage.removeItem("playlist-description")
-                localStorage.removeItem("top-button")
 
-                localStorage.setItem("top-button", "its the top button")
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", JSON.stringify(imageUrls))
                 localStorage.setItem("playlist", JSON.stringify(playlist))
@@ -221,9 +219,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.removeItem("playlist")
                 localStorage.removeItem("playlistID")
                 localStorage.removeItem("playlist-description")
-                localStorage.removeItem("bottom-button")
 
-                localStorage.setItem("bottom-button", "its the bottom button")
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", JSON.stringify( imageUrls ) )
                 localStorage.setItem("playlist", JSON.stringify(playlist));
