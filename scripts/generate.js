@@ -200,7 +200,6 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("playlist-description", playlist.description);
                 console.log("Playlist generated successfully:", playlist);
             } catch (error) {
-                counter++
                 console.error('Error generating playlist:', error);
             }
         }
