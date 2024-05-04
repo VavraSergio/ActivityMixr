@@ -144,7 +144,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("modal-text").textContent = data.activity;
-            localStorage.setItem( "playlist-name", data.activity );
+            localStorage.setItem("playlist-name", data.activity);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
