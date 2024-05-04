@@ -114,10 +114,10 @@ document.getElementById('submission').addEventListener('click', function (event)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
                 let imageUrl = "images/default.png"
-                if ( playlist.images && playlist.images.length > 0 )
-                    {
-                        imageUrl = playlist.images[0].url
-                    }
+                if ( playlist && playlist.images && playlist.images.length > 0 )
+                {
+                    imageUrl = playlist.images[0].url
+                }
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
@@ -127,7 +127,11 @@ document.getElementById('submission').addEventListener('click', function (event)
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrl)
-                localStorage.setItem("playlist-description", playlist.description)
+                localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
+                if( playlist && playlist.description && playlist.description.length > 0)
+                {
+                    localStorage.setItem( "playlist-description", playlist.description )
+                }
                 console.log("Playlist generated successfully:", playlist)
             } catch (error) {
                 console.error('Error generating playlist:', error)
@@ -198,10 +202,10 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
                 let imageUrl = "images/default.png"
-                if ( playlist.images && playlist.images.length > 0 )
-                    {
-                        imageUrl = playlist.images[0].url
-                    }
+                if( playlist && playlist.images && playlist.images.length > 0 )
+                {
+                    imageUrl = playlist.images[0].url
+                }
                 const spotifyUrl = playlist['external_urls']['spotify']
 
                 // Clear existing localStorage items
@@ -211,7 +215,11 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 
                 localStorage.setItem("spotify-url", spotifyUrl)
                 localStorage.setItem("image-url", imageUrl)
-                localStorage.setItem("playlist-description", playlist.description)
+                localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
+                if( playlist && playlist.description && playlist.description.length > 0)
+                {
+                    localStorage.setItem("playlist-description", playlist.description)
+                }
                 console.log("Playlist generated successfully:", playlist)
             } catch (error) {
                 console.error('Error generating playlist:', error)
