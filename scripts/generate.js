@@ -186,7 +186,8 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 localStorage.setItem("image-url", imageUrls)
                 localStorage.setItem("playlistObj", JSON.stringify(playlistObj));
                 const retrieved =  localStorage.getItem("playlistObj")
-                localStorage.setItem( "playlist", JSON.parse(retrieved).external_urls.spotify )
+                const parsedPlaylist = JSON.parse(retrieved)
+                localStorage.setItem( "playlist", parsedPlaylist.external_urls.spotify )
                 localStorage.setItem("playlistID", playlistObj.id);
                 localStorage.setItem("playlist-description", playlistObj.description);
                 console.log("Playlist generated successfully:", playlistObj);
