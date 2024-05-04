@@ -223,7 +223,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 
                 localStorage.setItem("bottom-button", "its the bottom button")
                 localStorage.setItem("spotify-url", spotifyUrl)
-                localStorage.setItem("image-url", json.stringify( imageUrls ) )
+                localStorage.setItem("image-url", JSON.stringify( imageUrls ) )
                 localStorage.setItem("playlist", JSON.stringify(playlist));
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description);
