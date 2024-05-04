@@ -183,11 +183,17 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const responseData = await response.json();
                 const playlist = responseData.playlists.items[0]; //the object
                 const imageUrls = playlist.images.map(image => image.url)
+                // const playlistLink = playlist.external_urls.map()
+                const spotifyUrl = playlist.external_urls.spotify
                 localStorage.setItem("image-url", imageUrls)
                 localStorage.setItem("playlist", JSON.stringify(playlist));
                 localStorage.setItem("playlistID", playlist.id);
                 localStorage.setItem("playlist-description", playlist.description);
                 console.log("Playlist generated successfully:", playlist);
+                for(const [key, value] of Object.entries(spotifyUrl))
+                    {
+                        console.log(key, value)
+                    }
             } catch (error) {
                 console.error('Error generating playlist:', error);
             }
