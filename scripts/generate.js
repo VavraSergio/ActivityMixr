@@ -151,10 +151,6 @@ document.getElementById('price').addEventListener('input', function () {
 
 document.getElementById('lucky').addEventListener('click', function (event) {
     event.preventDefault();
-    var modal = document.getElementById("myModal");
-    var span = document.getElementsByClassName("close")[0];
-
-    modal.style.display = "block";
 
     let apiUrl = 'https://www.boredapi.com/api/activity?';
 
