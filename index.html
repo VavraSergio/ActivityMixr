@@ -83,7 +83,7 @@
             const logoutBtn = document.getElementById('spotify-logout');
             const expiryTime = localStorage.getItem('expiry_time');
 
-            if (accessToken && expiryTime && currentTime < parseInt(expiryTime, 10)) {
+            if (accessToken && expiryTime && Date.now() < parseInt(expiryTime, 10)) {
                 loginBtn.style.display = 'none';
                 logoutBtn.style.display = 'inline block';
             } else {
