@@ -113,31 +113,25 @@ document.getElementById('submission').addEventListener('click', function (event)
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                if( playlist )
+                if( playlist ) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
                     {
-                        let imageUrl = "images/default.png"
-                        let spotifyUrl = "https://open.spotify.com/playlist/" + playlist.id
-                        if( playlist.images && playlist.images.length > 0 )
-                        {
-                            imageUrl = playlist.images[0].url
-                        }
-                        if( playlist.external_urls.length > 0)
-                        {
-                            spotifyUrl = playlist['external_urls']['spotify']
-                        }
-    
-                        // Clear existing localStorage items
-                        localStorage.removeItem("spotify-url")
-                        localStorage.removeItem("image-url")
-                        localStorage.removeItem("playlist-description")
-    
-                        localStorage.setItem("spotify-url", spotifyUrl)
-                        localStorage.setItem("image-url", imageUrl)
-                        localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
-                        if( playlist.description && playlist.description.length > 0)
-                        {
-                            localStorage.setItem("playlist-description", playlist.description)
-                        }
+                    //googled chrome runtime
+                    browser.runtime.sendMessage({ playlist })
+                    imageUrl = playlist.images[0].url
+                    spotifyUrl = playlist['external_urls']['spotify']
+
+                    // Clear existing localStorage items
+                    localStorage.removeItem("spotify-url")
+                    localStorage.removeItem("image-url")
+                    localStorage.removeItem("playlist-description")
+
+                    localStorage.setItem("spotify-url", spotifyUrl)
+                    localStorage.setItem("image-url", imageUrl)
+                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
+                    if( playlist.description.length > 0 )
+                    {
+                        localStorage.setItem("playlist-description", playlist.description)
+                    }
                         console.log("Playlist generated successfully:", playlist)
                     }
                 } catch (error) {
@@ -210,16 +204,10 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const playlist = responseData.playlists.items[0];
                 if( playlist )
                 {
-                    // let imageUrl = "images/default.png"
-                    // let spotifyUrl = "https://open.spotify.com/playlist/" + playlist.id
-                    // if( playlist.images && playlist.images.length > 0 )
-                    // {
-                        imageUrl = playlist.images[0].url
-                    // }
-                    // if( playlist.external_urls.length > 0)
-                    // {
-                        spotifyUrl = playlist['external_urls']['spotify']
-                    // }
+                    //googled browser.runtime.lastError
+                    browser.runtime.sendMessage({ playlist })
+                    imageUrl = playlist.images[0].url
+                    spotifyUrl = playlist['external_urls']['spotify']
 
                     // Clear existing localStorage items
                     localStorage.removeItem("spotify-url")
@@ -229,7 +217,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                     localStorage.setItem("spotify-url", spotifyUrl)
                     localStorage.setItem("image-url", imageUrl)
                     localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
-                    if( playlist.description && playlist.description.length > 0)
+                    if( playlist.description.length > 0 )
                     {
                         localStorage.setItem("playlist-description", playlist.description)
                     }
