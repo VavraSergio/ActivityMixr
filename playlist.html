@@ -93,13 +93,13 @@
     <!-- <script src="scripts/playlist.js"></script> -->
     <script>
         let counter = 3 // <!-- Playlist X starting at 3; increment it at the beginning -->
+        let main = document.getElementById( "main" )
         function playlistHTML()
         {
-            if( localStorage.getItem("generate") === "true" )
+            if( localStorage.getItem("generate") === "true" && main )
             {
                 localStorage.removeItem("generate")
                 //setup
-                let main = document.getElementById( "main" )
                 counter++; //counter will reflect next playlist
                 let comment = document.createComment( "playlist " + counter )
 
