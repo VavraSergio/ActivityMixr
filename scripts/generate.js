@@ -113,8 +113,8 @@ document.getElementById('submission').addEventListener('click', function (event)
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                if( playlist ) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
-                    {
+                if (playlist) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
+                {
                     imageUrl = playlist.images[0].url
                     spotifyUrl = playlist['external_urls']['spotify']
 
@@ -125,16 +125,15 @@ document.getElementById('submission').addEventListener('click', function (event)
 
                     localStorage.setItem("spotify-url", spotifyUrl)
                     localStorage.setItem("image-url", imageUrl)
-                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
-                    if( playlist.description.length > 0 )
-                    {
+                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice")
+                    if (playlist.description.length > 0) {
                         localStorage.setItem("playlist-description", playlist.description)
                     }
                     console.log("Playlist generated successfully:", playlist)
-                    localStorage.setItem( "generate", "true" )
+                    localStorage.setItem("generate", "true")
                     window.location.href = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
-                    }
-                } catch (error) {
+                }
+            } catch (error) {
                 console.error('Error generating playlist:', error)
             }
         }
@@ -162,20 +161,12 @@ document.getElementById('lucky').addEventListener('click', function (event) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            document.getElementById("modal-text").textContent = data.activity;
             localStorage.setItem("playlist-name", data.activity);
             luckyGen(localStorage.getItem("playlist-name"))
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    document.getElementById("backBtn").onclick = function () {
-        modal.style.display = "none";
-    }
-
     async function luckyGen(activity) {
         if (!(document.getElementById("modal-text").textContent === 'No activity found with those parameters!')) {
 
@@ -202,8 +193,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                if( playlist )
-                {
+                if (playlist) {
                     imageUrl = playlist.images[0].url
                     spotifyUrl = playlist['external_urls']['spotify']
 
@@ -214,13 +204,12 @@ document.getElementById('lucky').addEventListener('click', function (event) {
 
                     localStorage.setItem("spotify-url", spotifyUrl)
                     localStorage.setItem("image-url", imageUrl)
-                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice" )
-                    if( playlist.description.length > 0 )
-                    {
+                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice")
+                    if (playlist.description.length > 0) {
                         localStorage.setItem("playlist-description", playlist.description)
                     }
                     //store this in localStorage so that playlist.html knows to generate
-                    localStorage.setItem( "generate", "true" )
+                    localStorage.setItem("generate", "true")
                     console.log("Playlist generated successfully:", playlist)
 
                     window.location.href = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
@@ -229,6 +218,5 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 console.error('Error generating playlist:', error)
             }
         }
-        modal.style.display = "none";
     }
 })
