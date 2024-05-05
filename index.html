@@ -56,6 +56,7 @@
 
             <form>
                 <button id="spotify-login" type="submit">Login to Spotify</button>
+                <button id="spotify-logout" type="button" style="display: none;">Logout</button>
             </form>
 
             <div class="welcome-section">
@@ -76,30 +77,48 @@
     <script src="scripts/spotify.js"></script>
 
     <script>
-        document.getElementById("spotify-login").addEventListener("click", async () => {
-            event.preventDefault();
-            [verifier, challenge] = await generateCodeChallenge();
-            localStorage.setItem("code_verifier", verifier);
-            console.log(verifier);
+        window.onload = function () {
+            const accessToken = localStorage.getItem('access_token');
+            const loginBtn = document.getElementById('spotify-login');
+            const logoutBtn = document.getElementById('spotify-logout');
 
-            const clientId = "d774e69457df4fafbd90d6fb8208be05"
-            const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
-
-            const scope = "user-read-private user-read-email playlist-modify-private playlist-modify-public"; // Specifies what user data your app can access!
-            const authUrl = new URL("https://accounts.spotify.com/authorize")
-
-            const params = {
-                response_type: 'code',
-                client_id: clientId,
-                scope: scope,
-                code_challenge_method: 'S256',
-                code_challenge: challenge, // The hashed code verifier
-                redirect_uri: redirectUri,
+            if (accessToken) {
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'block';
+            } else {
+                loginBtn.style.display = 'block';
+                logoutBtn.style.display = 'none';
             }
 
-            authUrl.search = new URLSearchParams(params).toString();
-            window.location.href = authUrl.toString(); // Redirect the user
-        });
+            loginBtn.addEventListener("click", async () => {
+                event.preventDefault();
+                [verifier, challenge] = await generateCodeChallenge();
+                localStorage.setItem("code_verifier", verifier);
+                console.log(verifier);
+
+                const clientId = "d774e69457df4fafbd90d6fb8208be05"
+                const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
+
+                const scope = "user-read-private user-read-email playlist-modify-private playlist-modify-public"; // Specifies what user data your app can access!
+                const authUrl = new URL("https://accounts.spotify.com/authorize")
+
+                const params = {
+                    response_type: 'code',
+                    client_id: clientId,
+                    scope: scope,
+                    code_challenge_method: 'S256',
+                    code_challenge: challenge, // The hashed code verifier
+                    redirect_uri: redirectUri,
+                }
+
+                authUrl.search = new URLSearchParams(params).toString();
+                window.location.href = authUrl.toString(); // Redirect the user
+            });
+            logoutBtn.addEventListener('click', function () {
+                localStorage.removeItem('access_token');
+                window.location.reload(); // Reload the page after logout
+            });
+        }
     </script>
 
 </body>

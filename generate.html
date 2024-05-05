@@ -83,42 +83,45 @@
     <script>
 
         const accessToken = localStorage.getItem('access_token');
-        (async () => {
+
+        if (!(accessToken)) {
+            (async () => {
 
 
-            const clientId = "d774e69457df4fafbd90d6fb8208be05"
-            const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
-            const urlParams = new URLSearchParams(window.location.search);
-            const authCode = urlParams.get("code");
+                const clientId = "d774e69457df4fafbd90d6fb8208be05"
+                const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
+                const urlParams = new URLSearchParams(window.location.search);
+                const authCode = urlParams.get("code");
 
-            // If there is no code, redirect to the login page
-            if (!authCode) {
-                console.log("No authorization code found!");
-                window.location.href = "index.html";
-            }
-
-            // (2) Get the code verifier from local storage
-
-            const codeVerifier = localStorage.getItem("code_verifier");
-            console.log(codeVerifier);
-
-
-            const getAccessToken = async () => {
-                try {
-                    console.log(authCode)
-                    const data = await getToken(clientId, redirectUri, authCode, codeVerifier);
-                    console.log(data);
-
-                    // Update the token in local storage
-                    localStorage.setItem("access_token", data.access_token);
-                    localStorage.setItem("refresh_token", data.refresh_token);
-                    localStorage.setItem("expiry_time", Date.now() + (data.expires_in * 1000));
-                } catch (error) {
-                    alert(error);
+                // If there is no code, redirect to the login page
+                if (!authCode) {
+                    console.log("No authorization code found!");
+                    window.location.href = "index.html";
                 }
-            }
-            getAccessToken();
-        })();
+
+                // (2) Get the code verifier from local storage
+
+                const codeVerifier = localStorage.getItem("code_verifier");
+                console.log(codeVerifier);
+
+
+                const getAccessToken = async () => {
+                    try {
+                        console.log(authCode)
+                        const data = await getToken(clientId, redirectUri, authCode, codeVerifier);
+                        console.log(data);
+
+                        // Update the token in local storage
+                        localStorage.setItem("access_token", data.access_token);
+                        localStorage.setItem("refresh_token", data.refresh_token);
+                        localStorage.setItem("expiry_time", Date.now() + (data.expires_in * 1000));
+                    } catch (error) {
+                        alert(error);
+                    }
+                }
+                getAccessToken();
+            })();
+        }
     </script>
 </body>
 
