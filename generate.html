@@ -85,10 +85,10 @@
         const accessToken = localStorage.getItem('access_token');
         const expiryTime = localStorage.getItem('expiry_time');
 
-        if (accessToken && expiryTime) {
+        if (!(accessToken && expiryTime)) {
             const currentTime = Date.now();
 
-            if (currentTime < parseInt(expiryTime, 10)) {
+            if (!(currentTime < parseInt(expiryTime, 10))) {
                 (async () => {
 
 
