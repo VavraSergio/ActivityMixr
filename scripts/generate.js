@@ -116,7 +116,7 @@ document.getElementById('submission').addEventListener('click', function (event)
                 if( playlist ) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
                     {
                     //googled chrome runtime
-                    browser.runtime.sendMessage({ playlist })
+                    chrome.runtime.sendMessage({ playlist })
                     imageUrl = playlist.images[0].url
                     spotifyUrl = playlist['external_urls']['spotify']
 
@@ -205,7 +205,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 if( playlist )
                 {
                     //googled browser.runtime.lastError
-                    browser.runtime.sendMessage({ playlist })
+                    chrome.runtime.sendMessage({ playlist })
                     imageUrl = playlist.images[0].url
                     spotifyUrl = playlist['external_urls']['spotify']
 
