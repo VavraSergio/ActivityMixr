@@ -18,16 +18,14 @@
         margin: 10px;
     }
 
-    figure figcaption 
-    {
+    figure figcaption {
         text-align: center;
     }
 
-    form 
-    {
+    .button-container {
         text-align: center;
     }
-    
+
     @media (max-width: 690px) {
         .activity-categories {
             flex-direction: column;
@@ -44,4 +42,6 @@
             padding: 0px;
         }
     }
+
+
 }

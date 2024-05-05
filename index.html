@@ -53,12 +53,12 @@
                     </figure>
                 </div>
             </div>
-
-            <form>
-                <button id="spotify-login" type="submit">Login to Spotify</button>
-                <button id="spotify-logout" type="button" style="display: none;">Logout</button>
-            </form>
-
+            <div class="button-container">
+                <form>
+                    <button id="spotify-login" type="submit">Login to Spotify</button>
+                    <button id="spotify-logout" type="button">Logout</button>
+                </form>
+            </div>
             <div class="welcome-section">
                 <h2>Why Choose ActivityMixr?</h2>
                 <p>Customized Experiences: ActivityMixr curates activities based on your preferences, ensuring a
@@ -81,12 +81,13 @@
             const accessToken = localStorage.getItem('access_token');
             const loginBtn = document.getElementById('spotify-login');
             const logoutBtn = document.getElementById('spotify-logout');
+            const expiryTime = localStorage.getItem('expiry_time');
 
-            if (accessToken) {
+            if (accessToken && expiryTime && currentTime < parseInt(expiryTime, 10)) {
                 loginBtn.style.display = 'none';
-                logoutBtn.style.display = 'block';
+                logoutBtn.style.display = 'inline block';
             } else {
-                loginBtn.style.display = 'block';
+                loginBtn.style.display = 'inline block';
                 logoutBtn.style.display = 'none';
             }
 
