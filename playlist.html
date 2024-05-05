@@ -94,7 +94,8 @@
     <script>
         let counter = 3 // <!-- Playlist X starting at 3; increment it at the beginning -->
 
-        window.onload = function()
+        window.onload = playlistHTML()
+        function playlistHTML()
         {
             //setup
             let main = document.getElementById( "main" )
@@ -146,8 +147,6 @@
             localStorage.removeItem("image-url")
             localStorage.removeItem("playlist-description")
         }
-
-        playlistHTML()
     </script>
 
 </body>
