@@ -24,7 +24,22 @@
 
     .button-container {
         text-align: center;
+        margin-top: 20px;
+        /* Adjust margin as needed */
     }
+
+    .log-in,
+    .log-out {
+        background-color: #1DB954;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+
 
     @media (max-width: 690px) {
         .activity-categories {
