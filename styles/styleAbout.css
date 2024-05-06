@@ -22,10 +22,15 @@
         }
     }
 
-    figure figcaption
-    {
+    figure figcaption {
         text-align: center;
     }
+
+    .sergio-photo {
+        height: 200px;
+        width: 200px;
+    }
+
     @media (max-width: 490px) {
         .about_photo {
             flex-direction: column;
