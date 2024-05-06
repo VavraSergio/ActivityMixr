@@ -103,7 +103,7 @@
             const playlists = JSON.parse(localStorage.getItem('playlists'));
 
             if (playlists && playlists.length > 0) {
-                playlists.forEach(playlist => {
+                playlists.forEach((playlist, index) => {
                     counter++;
                     let comment = document.createComment("playlist " + counter)
 
@@ -136,17 +136,32 @@
                     a.textContent = "Listen on Spotify!"
 
                     //div comes last because we just append all the html elements to div
+
+                    let deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', () => {
+                        deletePlaylist(index);
+                    });
+
                     let div = document.createElement("div")
                     div.className = "activity-playlist"
                     div.appendChild(h2)
                     div.appendChild(figure)
                     div.appendChild(a)
+                    div.appendChild(deleteButton)
 
                     main.append(comment)
                     main.appendChild(div)
+
                 });
             } else {
                 console.log('No playlists found.');
+            }
+
+            function deletePlaylist(index) {
+                playlists.splice(index, 1);
+                localStorage.setItem('playlists', JSON.stringify(playlists));
+                playlistHTML();
             }
             // if( localStorage.getItem("generate") === "true" && main )
             // {
