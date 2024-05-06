@@ -190,7 +190,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                if (playlist) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank a
+                if (playlist) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
                 {
                     imageUrl = playlist.images[0].url;
                     spotifyUrl = playlist['external_urls']['spotify'];
