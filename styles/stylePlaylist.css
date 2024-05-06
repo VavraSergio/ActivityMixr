@@ -62,7 +62,7 @@ main {
 
 .blobify-button {
     width: 35%;
-    background-color: #4CAF50;
+    background-color: #1DB954;
     color: black;
     border: none;
     border-radius: 5px;
@@ -82,7 +82,7 @@ main {
 
 .crud-buttons {
     width: 45%;
-    background-color: #4CAF50;
+    background-color: #1DB954;
     color: black;
     border: none;
     border-radius: 5px;
@@ -98,4 +98,8 @@ main {
 
 .crud-buttons:hover {
     background-color: #45a049;
+}
+
+.activity-playlist .crud-buttons {
+    margin-bottom: 10px;
 }
