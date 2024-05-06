@@ -61,34 +61,6 @@
                     target="_blank">Listen on
                     Spotify!</a>
             </div>
-
-            <!-- Playlist 2 -->
-            <div class="activity-playlist">
-                <h2>Write a song!</h2>
-                <figure>
-                    <img src="images/SongWriting.png" alt="Song-Writing-Playlist" class="playlist-image">
-                    <figcaption class="playlist-description">Write a new song while listening to this playlist
-                        specifcally created
-                        for this activity.</figcaption>
-                </figure>
-                <a href="https://open.spotify.com/playlist/37i9dQZF1EIf7JB7oRzi4n" class="spotify-link"
-                    target="_blank">Listen on
-                    Spotify!</a>
-            </div>
-
-
-            <!-- Playlist 3 -->
-            <div class="activity-playlist">
-                <h2>Clean out your Car!</h2>
-                <figure>
-                    <img src="images/CleaningPlaylist.png" alt="Cleaning Playlist" class="playlist-image">
-                    <figcaption class="playlist-description">Instead of sitting around in your house, clean your car!
-                        Listen to this
-                        playlist made for cleaning!</figcaption>
-                </figure>
-                <a href="https://open.spotify.com/playlist/37i9dQZF1EIhmPdaeHzd5o" class="spotify-link"
-                    target="_blank">Listen on Spotify!</a>
-            </div>
         </main>
     </div>
     <footer>
@@ -97,7 +69,7 @@
 
     <!-- <script src="scripts/playlist.js"></script> -->
     <script>
-        let counter = 3 // <!-- Playlist X starting at 3; increment it at the beginning -->
+        let counter = 1 // <!-- Playlist X starting at 1; increment it at the beginning -->
         let main = document.querySelector("main")
         function playlistHTML() {
             const playlists = JSON.parse(localStorage.getItem('playlists'));
