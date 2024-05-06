@@ -60,8 +60,28 @@ main {
     text-align: center;
 }
 
+.blobify-button {
+    width: 35%;
+    background-color: #4CAF50;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 4px;
+    margin-bottom: 10px;
+}
+
+.blobify-button:hover {
+    background-color: #45a049;
+}
+
 .crud-buttons {
-    width: 100%;
+    width: 65%;
     background-color: #4CAF50;
     color: black;
     border: none;
