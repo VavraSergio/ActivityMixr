@@ -159,7 +159,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            luckyGen(activity)
+            luckyGen(data.activity)
         })
         .catch(error => {
             console.error('Error fetching data:', error);
