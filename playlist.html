@@ -36,6 +36,11 @@
                 </p>
             </div>
 
+            <div class="blobify">
+                <p>Done generating playlists for your activity? Want to import a playlist of your own? You can do so by clicking on the buttons below </p>
+                <button type="button" id="genereate-blob-btn">Blobify your playlists</button>
+                <button type="button" id="import-blob-btn">Import your playlists</button>
+            </div>
             <!-- Playlist 0 -->
             <div class="activity-playlist">
                 <h2>Gamble to your heart's content</h2>
@@ -157,6 +162,29 @@
         window.onload = playlistHTML()
     </script>
 
+    <!-- blobify data script -->
+    <script>
+        document.getElementById("generate-blob-btn").addEventListener('click', function() 
+        {
+            const localLists = localStorage.getItem('playlists')
+
+            if( localLists )
+            {
+                const parsedlists = JSON.parse(localLists)
+                const playlists = JSON.stringify(parsedlists)
+                const blob = new Blob([playlists], { type: "application/json" })
+                const blobUrl = URL.createObjectURL( blob )
+                const a = document.createElement( "a" )
+                a.href = blobUrl
+                a.download = "playlists.json"
+                a.click()
+            }
+            else
+            {
+                console.log( "You have not generated any playlists." )
+            }
+        })
+    </script>
 </body>
 
 
