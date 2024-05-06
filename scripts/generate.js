@@ -1,3 +1,5 @@
+let playlists = [];
+
 document.getElementById('submission').addEventListener('click', function (event) {
     event.preventDefault();
     let activity;
@@ -11,8 +13,6 @@ document.getElementById('submission').addEventListener('click', function (event)
     let accessibility = document.getElementById('accessibility').value;
 
     let price = document.getElementById('price').value;
-
-    let playlists = [];
 
     let count = 0;
 
@@ -159,8 +159,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("playlist-name", data.activity);
-            luckyGen(localStorage.getItem("playlist-name"))
+            luckyGen(activity)
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -191,25 +190,25 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                 const response = await fetch(apiUrl, payload)
                 const responseData = await response.json()
                 const playlist = responseData.playlists.items[0];
-                if (playlist) {
-                    imageUrl = playlist.images[0].url
-                    spotifyUrl = playlist['external_urls']['spotify']
+                if (playlist) // if the playlist is valid, all the .notation should be valid, with the exception of description which can be blank
+                {
+                    imageUrl = playlist.images[0].url;
+                    spotifyUrl = playlist['external_urls']['spotify'];
 
-                    // Clear existing localStorage items
-                    localStorage.removeItem("spotify-url")
-                    localStorage.removeItem("image-url")
-                    localStorage.removeItem("playlist-description")
 
-                    localStorage.setItem("spotify-url", spotifyUrl)
-                    localStorage.setItem("image-url", imageUrl)
-                    localStorage.setItem("playlist-description", "Unfortunately, there was no description, but I hope this will suffice")
-                    if (playlist.description.length > 0) {
-                        localStorage.setItem("playlist-description", playlist.description)
+                    const storedPlaylists = JSON.parse(localStorage.getItem('playlists'));
+                    if (storedPlaylists) {
+                        playlists = storedPlaylists;
                     }
-                    //store this in localStorage so that playlist.html knows to generate
-                    localStorage.setItem("generate", "true")
+                    const playlistInfo = {
+                        spotifyName: activity,
+                        spotifyUrl: spotifyUrl,
+                        imageUrl: imageUrl,
+                        description: playlist.description.length > 0 ? playlist.description : "Unfortunately, there was no description, but I hope this will suffice"
+                    };
+                    playlists.push(playlistInfo);
+                    localStorage.setItem('playlists', JSON.stringify(playlists));
                     console.log("Playlist generated successfully:", playlist)
-
                     window.location.href = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
                 }
             } catch (error) {
