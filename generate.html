@@ -85,8 +85,17 @@
         const accessToken = localStorage.getItem('access_token');
         const expiryTime = localStorage.getItem('expiry_time');
 
+<<<<<<< HEAD
         if (!(accessToken && expiryTime)) {
             const currentTime = Date.now();
+=======
+        if ((!(accessToken) || (!expiryTime))) {
+            (async () => {
+                const clientId = "d774e69457df4fafbd90d6fb8208be05"
+                const redirectUri = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/generate.html';
+                const urlParams = new URLSearchParams(window.location.search);
+                const authCode = urlParams.get("code");
+>>>>>>> parent of 909eb8b (Hold on)
 
             if ((currentTime < parseInt(expiryTime, 10))) {
                 (async () => {
