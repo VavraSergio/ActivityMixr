@@ -111,12 +111,14 @@
                     //div comes last because we just append all the html elements to div
 
                     let deleteButton = document.createElement('button');
+                    deleteButton.className = "crud-buttons"
                     deleteButton.textContent = 'Delete';
                     deleteButton.addEventListener('click', () => {
                         deletePlaylist(index);
                     });
 
                     let editButton = document.createElement('button');
+                    editbutton.className = "crud-buttons"
                     editButton.textContent = 'Edit Name';
                     editButton.addEventListener('click', () => {
                         editPlaylistName(index);
