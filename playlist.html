@@ -200,7 +200,7 @@
                 const file = imported.files[0]
                 const reader = new FileReader()
 
-                reader.onload = funciton( event )
+                reader.onload = function( event )
                 {
                     const importedString = event.target.result
                     const importedJSON = JSON.parse(importedString)
