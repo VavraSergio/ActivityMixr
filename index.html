@@ -77,13 +77,14 @@
     <script src="scripts/spotify.js"></script>
 
     <script>
+        const loginBtn = document.getElementById('spotify-login');
+        const logoutBtn = document.getElementById('spotify-logout');
+
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'none';
         window.onload = function () {
 
             const accessToken = localStorage.getItem('access_token');
-            const loginBtn = document.getElementById('spotify-login');
-            const logoutBtn = document.getElementById('spotify-logout');
             const expiryTime = localStorage.getItem('expiry_time');
 
             if (accessToken) {
