@@ -42,7 +42,7 @@
 
                 <p>Want to import a playlist of your own? Do so by choosing a file down below</p>
                 <!-- <label for="import-file">Import your playlists</label> -->
-                <input type="file" id="import-file" accept=".json" onchange="importBlob(); playlistHTML();">
+                <input type="file" id="import-file" accept=".json" onchange="importBlob()">
             </div>
             <!-- Playlist 0 -->
             <div class="activity-playlist">
@@ -215,7 +215,8 @@
             else
             {
                 console.log( "Could not import playlist data" )
-            }
+            }        
+            playlistHTML()
         }
        
     </script>
