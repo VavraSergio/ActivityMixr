@@ -76,6 +76,9 @@ main {
     font-size: 16px;
     margin-right: 4px;
     margin-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+
 }
 
 .blobify-button:hover {
@@ -96,12 +99,10 @@ main {
     font-size: 16px;
     margin-right: 4px;
     margin-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
 }
 
 .crud-buttons:hover {
     background-color: #45a049;
-}
-
-.activity-playlist .crud-buttons {
-    margin-bottom: 10px;
 }
