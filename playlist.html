@@ -37,11 +37,11 @@
 
             <div class="blobify">
                 <p>Done generating playlists for your activity? You can do so by clicking on the button below </p>
-                <button type="button" id="generate-blob-btn">Blobify your playlists</button>
+                <button type="button" id="generate-blob-btn" class="crud-buttons">Blobify your playlists</button>
 
                 <p>Want to import a playlist of your own? Do so by choosing a file down below</p>
                 <!-- <label for="import-file">Import your playlists</label> -->
-                <input type="file" id="import-file" accept=".json" onchange="importBlob()">
+                <input type="file" id="import-file" class="crud-buttons" accept=".json" onchange="importBlob()">
             </div>
             <!-- Playlist 0 -->
             <div class="activity-playlist">
@@ -166,59 +166,52 @@
 
     <!-- blobify data script -->
     <script>
-        document.getElementById("generate-blob-btn").addEventListener('click', function() 
-        {
+        document.getElementById("generate-blob-btn").addEventListener('click', function () {
             const localLists = localStorage.getItem('playlists')
 
-            if( localLists )
-            {
+            if (localLists) {
                 const parsedlists = JSON.parse(localLists)
                 const playlists = JSON.stringify(parsedlists)
                 const blob = new Blob([playlists], { type: "application/json" })
-                const blobUrl = URL.createObjectURL( blob )
-                const a = document.createElement( "a" )
+                const blobUrl = URL.createObjectURL(blob)
+                const a = document.createElement("a")
                 a.href = blobUrl
                 a.download = "playlists.json"
                 a.click()
             }
-            else
-            {
-                alert( "You have not generated any playlists." )
+            else {
+                alert("You have not generated any playlists.")
             }
         })
     </script>
 
     <!-- import blobified data script -->
     <script>
-        function importBlob()
-        {
-            const imported = document.getElementById( "import-file" ) 
+        function importBlob() {
+            const imported = document.getElementById("import-file")
 
-            if( imported.files.length > 0 )
-            {
+            if (imported.files.length > 0) {
                 const file = imported.files[0]
                 const reader = new FileReader()
 
-                reader.onload = function( event )
-                {
+                reader.onload = function (event) {
                     const importedString = event.target.result
                     const importedJSON = JSON.parse(importedString)
 
-                    let localLists = localStorage.getItem( "playlists" )
-                    localLists = localLists ? JSON.parse( localLists ) : []
-                    const playlists = localLists.concat( importedJSON )
-                    localStorage.setItem( "playlists", JSON.stringify( playlists ) )
+                    let localLists = localStorage.getItem("playlists")
+                    localLists = localLists ? JSON.parse(localLists) : []
+                    const playlists = localLists.concat(importedJSON)
+                    localStorage.setItem("playlists", JSON.stringify(playlists))
                 }
-                reader.readAsText( file )
+                reader.readAsText(file)
             }
-            else
-            {
-                console.log( "Could not import playlist data" )
-            }    
-            window.location.reload()    
+            else {
+                console.log("Could not import playlist data")
+            }
+            window.location.reload()
             playlistHTML()
         }
-       
+
     </script>
 </body>
 
