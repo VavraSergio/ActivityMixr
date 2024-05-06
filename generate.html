@@ -101,7 +101,6 @@
                     if (!authCode) {
                         console.log("No authorization code found!");
                         window.location.href = "index.html";
-<<<<<<< HEAD
                     }
                             // (2) Get the code verifier from local storage
 
@@ -130,37 +129,6 @@
                         window.location.href = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/index.html';
                     }
                 }
-=======
-                    }
-
-                    // (2) Get the code verifier from local storage
-
-                    const codeVerifier = localStorage.getItem("code_verifier");
-                    console.log(codeVerifier);
-
-
-                    const getAccessToken = async () => {
-                        try {
-                            console.log(authCode)
-                            const data = await getToken(clientId, redirectUri, authCode, codeVerifier);
-                            console.log(data);
-
-                            // Update the token in local storage
-                            localStorage.setItem("access_token", data.access_token);
-                            localStorage.setItem("refresh_token", data.refresh_token);
-                            localStorage.setItem("expiry_time", Date.now() + (data.expires_in * 1000));
-                        } catch (error) {
-                            alert(error);
-                        }
-                    }
-                    getAccessToken();
-                })();
-            } else {
-                console.log("Access token has expired. Redirecting to login page...");
-                window.location.href = 'https://wanghci.github.io/project-milestone-2-team-azuresergio/index.html';
-            }
-        }
->>>>>>> parent of a6943f0 (Merge branch 'main' of https://github.com/wanghci/project-milestone-2-team-azuresergio)
     </script>
 </body>
 
