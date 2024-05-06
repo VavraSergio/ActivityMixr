@@ -143,12 +143,19 @@
                         deletePlaylist(index);
                     });
 
+                    let editButton = document.createElement('button');
+                    editButton.textContent = 'Edit Name';
+                    editButton.addEventListener('click', () => {
+                        editPlaylistName(index);
+                    });
+
                     let div = document.createElement("div")
                     div.className = "activity-playlist"
                     div.appendChild(h2)
                     div.appendChild(figure)
                     div.appendChild(a)
                     div.appendChild(deleteButton)
+                    div.appendChild(editButton)
 
                     main.append(comment)
                     main.appendChild(div)
@@ -162,6 +169,15 @@
                 playlists.splice(index, 1);
                 localStorage.setItem('playlists', JSON.stringify(playlists));
                 window.location.reload(); // Reload the page after logout
+            }
+
+            function editPlaylistName(index) {
+                const newPlaylistName = prompt('Enter the new name for the playlist:');
+                if (newPlaylistName) {
+                    playlists[index].name = newPlaylistName;
+                    localStorage.setItem('playlists', JSON.stringify(playlists));
+                    window.location.reload(); // Reload the page after logout
+                }
             }
             // if( localStorage.getItem("generate") === "true" && main )
             // {
