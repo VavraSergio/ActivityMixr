@@ -40,9 +40,11 @@
                 <h2>Gamble to your heart's content</h2>
                 <figure>
                     <img src="images/Victory.jpg" alt="All I do is win album cover" class="playlist-image">
-                    <figcaption class="playlist-description">Gamble, but gamble responsibly on Gambler's Paradise</figcaption>
+                    <figcaption class="playlist-description">Gamble, but gamble responsibly on Gambler's Paradise
+                    </figcaption>
                 </figure>
-                <a href="https://open.spotify.com/playlist/2rG0IGv0dCO8Eu3Gdq1KJ1" class="spotify-link" target="_blank">Listen on Spotify!</a>
+                <a href="https://open.spotify.com/playlist/2rG0IGv0dCO8Eu3Gdq1KJ1" class="spotify-link"
+                    target="_blank">Listen on Spotify!</a>
             </div>
 
             <!-- Playlist 1 -->
@@ -50,9 +52,10 @@
                 <h2>Take a hike at a local park!</h2>
                 <figure>
                     <img src="images/Hiking-Playlist.png" alt="Hike Playlist" class="playlist-image">
-                    <figcaption class="playlist-description">Go on a hike at a park new you. Feel reinvigerated with this playlist
+                    <figcaption class="playlist-description">Go on a hike at a park new you. Feel reinvigerated with
+                        this playlist
                         created specifically for this activity.
-                </figcaption>
+                    </figcaption>
                 </figure>
                 <a href="https://open.spotify.com/playlist/37i9dQZF1EIhyYQ2buKkVp" class="spotify-link"
                     target="_blank">Listen on
@@ -64,7 +67,8 @@
                 <h2>Write a song!</h2>
                 <figure>
                     <img src="images/SongWriting.png" alt="Song-Writing-Playlist" class="playlist-image">
-                    <figcaption class="playlist-description">Write a new song while listening to this playlist specifcally created
+                    <figcaption class="playlist-description">Write a new song while listening to this playlist
+                        specifcally created
                         for this activity.</figcaption>
                 </figure>
                 <a href="https://open.spotify.com/playlist/37i9dQZF1EIf7JB7oRzi4n" class="spotify-link"
@@ -78,7 +82,8 @@
                 <h2>Clean out your Car!</h2>
                 <figure>
                     <img src="images/CleaningPlaylist.png" alt="Cleaning Playlist" class="playlist-image">
-                    <figcaption class="playlist-description">Instead of sitting around in your house, clean your car! Listen to this
+                    <figcaption class="playlist-description">Instead of sitting around in your house, clean your car!
+                        Listen to this
                         playlist made for cleaning!</figcaption>
                 </figure>
                 <a href="https://open.spotify.com/playlist/37i9dQZF1EIhmPdaeHzd5o" class="spotify-link"
@@ -93,63 +98,70 @@
     <!-- <script src="scripts/playlist.js"></script> -->
     <script>
         let counter = 3 // <!-- Playlist X starting at 3; increment it at the beginning -->
-        let main = document.querySelector( "main" )
-        function playlistHTML()
-        {
-            if( localStorage.getItem("generate") === "true" && main )
-            {
-                localStorage.removeItem("generate")
-                //setup
-                counter++; //counter will reflect next playlist
-                let comment = document.createComment( "playlist " + counter )
+        let main = document.querySelector("main")
+        function playlistHTML() {
+            const playlists = JSON.parse(localStorage.getItem('playlists'));
 
-                //localStorage getters
-                let name = localStorage.getItem( "playlist-name" )
-                let imgUrl = localStorage.getItem( "image-url" )
-                let spotifyUrl = localStorage.getItem( "spotify-url" )
-                let description = localStorage.getItem( "playlist-description" )
+            if (playlists && playlists.length > 0) {
+                playlists.forEach(playlist => {
+                    counter++;
+                    let name = playlist.spotifyName;
+                    let spotifyUrl = playlist.spotifyUrl;
+                    const imgUrl = playlist.imageUrl;
+                    const description = playlist.description;
 
-                //elemental and elemental attribute creation
-                let h2 = document.createElement( "h2" )
-                h2.textContent = name
+                    //elemental and elemental attribute creation
+                    let h2 = document.createElement("h2")
+                    h2.textContent = name
 
-                let figcaption = document.createElement( "figcaption" )
-                figcaption.className = "playlist-description"
-                figcaption.textContent = description
+                    let figcaption = document.createElement("figcaption")
+                    figcaption.className = "playlist-description"
+                    figcaption.textContent = description
 
-                let img = document.createElement( "img" )
-                img.src = imgUrl
-                img.alt = "ActivityMixr generated playlist"
-                img.className = "playlist-image"
+                    let img = document.createElement("img")
+                    img.src = imgUrl
+                    img.alt = "ActivityMixr generated playlist"
+                    img.className = "playlist-image"
 
-                let figure = document.createElement( "figure" )
-                figure.appendChild( img )
-                figure.appendChild( figcaption )
+                    let figure = document.createElement("figure")
+                    figure.appendChild(img)
+                    figure.appendChild(figcaption)
 
-                let a = document.createElement( "a" )
-                a.href = spotifyUrl
-                a.className = "spotify-link"
-                a.target = "_blank"
-                a.textContent = "Listen on Spotify!"
+                    let a = document.createElement("a")
+                    a.href = spotifyUrl
+                    a.className = "spotify-link"
+                    a.target = "_blank"
+                    a.textContent = "Listen on Spotify!"
 
-                //div comes last because we just append all the html elements to div
-                let div = document.createElement( "div" )
-                div.className = "activity-playlist"
-                div.appendChild( h2 )
-                div.appendChild( figure )
-                div.appendChild( a )
+                    //div comes last because we just append all the html elements to div
+                    let div = document.createElement("div")
+                    div.className = "activity-playlist"
+                    div.appendChild(h2)
+                    div.appendChild(figure)
+                    div.appendChild(a)
 
-                main.append( comment )
-                main.appendChild( div )
-
-                //deletes items so that same playlist isn't generated over and over
-                localStorage.removeItem("playlist-name")
-                localStorage.removeItem("spotify-url")
-                localStorage.removeItem("image-url")
-                localStorage.removeItem("playlist-description")
-                }
+                    main.append(comment)
+                    main.appendChild(div)
+                });
+            } else {
+                console.log('No playlists found.');
             }
-            window.onload = playlistHTML()
+            // if( localStorage.getItem("generate") === "true" && main )
+            // {
+            //     localStorage.removeItem("generate")
+            //     //setup
+            //     ; //counter will reflect next playlist
+            //     let comment = document.createComment( "playlist " + counter )
+
+            //     //localStorage getters
+            //     let name = localStorage.getItem( "playlist-name" )
+            //     let imgUrl = localStorage.getItem( "image-url" )
+            //     let spotifyUrl = localStorage.getItem( "spotify-url" )
+            //     let description = localStorage.getItem( "playlist-description" )
+
+
+        }
+        window.onload = playlistHTML()
     </script>
 
 </body>
