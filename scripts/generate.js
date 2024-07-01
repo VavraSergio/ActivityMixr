@@ -5,9 +5,8 @@ document.getElementById('submission').addEventListener('click', function (event)
     let activity;
 
     let participants = document.getElementById('participants').value;
-    let apiUrl = 'https://www.boredapi.com/api/activity?';
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-    apiUrl = corsProxy + apiUrl;
+
+    apiUrl = 'https://cors-anywhere.herokuapp.com/' + 'https://www.boredapi.com/api/activity?';
 
     let type = document.getElementById('type').value;
 
@@ -156,9 +155,8 @@ document.getElementById('price').addEventListener('input', function () {
 document.getElementById('lucky').addEventListener('click', function (event) {
     event.preventDefault();
 
-    let apiUrl = 'https://www.boredapi.com/api/activity?';
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-    apiUrl = corsProxy + apiUrl;
+    apiUrl = 'https://cors-anywhere.herokuapp.com/' + 'https://www.boredapi.com/api/activity?';
+
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
