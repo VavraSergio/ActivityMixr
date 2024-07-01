@@ -133,7 +133,7 @@ document.getElementById('submission').addEventListener('click', function (event)
                     playlists.push(playlistInfo);
                     localStorage.setItem('playlists', JSON.stringify(playlists));
                     console.log("Playlist generated successfully:", playlist)
-                    window.location.href = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
+                    window.location.href = "https://vavrasergio.github.io/ActivityMixr/playlists.html"
                 }
             } catch (error) {
                 console.error('Error generating playlist:', error)
@@ -209,7 +209,7 @@ document.getElementById('lucky').addEventListener('click', function (event) {
                     playlists.push(playlistInfo);
                     localStorage.setItem('playlists', JSON.stringify(playlists));
                     console.log("Playlist generated successfully:", playlist)
-                    window.location.href = "https://wanghci.github.io/project-milestone-2-team-azuresergio/playlist.html"
+                    window.location.href = "https://vavrasergio.github.io/ActivityMixr/generate.html"
                 }
             } catch (error) {
                 console.error('Error generating playlist:', error)
