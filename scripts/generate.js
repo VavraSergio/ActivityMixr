@@ -6,7 +6,8 @@ document.getElementById('submission').addEventListener('click', function (event)
 
     let participants = document.getElementById('participants').value;
     let apiUrl = 'https://www.boredapi.com/api/activity?';
-
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    apiUrl = corsProxy + apiUrl;
 
     let type = document.getElementById('type').value;
 
@@ -60,6 +61,7 @@ document.getElementById('submission').addEventListener('click', function (event)
         }, "2000");
         return;
     } else {
+
 
         fetch(apiUrl)
             .then(response => response.json())
@@ -155,7 +157,8 @@ document.getElementById('lucky').addEventListener('click', function (event) {
     event.preventDefault();
 
     let apiUrl = 'https://www.boredapi.com/api/activity?';
-
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    apiUrl = corsProxy + apiUrl;
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
